@@ -1,37 +1,68 @@
-<!doctype html><html lang="sq"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Seria e Fikhut</title><style>
-*{box-sizing:border-box}body{margin:0;background:#050505;color:#ead99b;font-family:Arial,sans-serif}
-header{border-bottom:1px solid #6f5216;padding:22px}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
-header b{font:700 26px Georgia,serif;color:#f2bd27}nav{float:right}nav a{color:#ddd0a8;text-decoration:none;margin-left:25px}
-.hero{padding:55px 0 35px;text-align:center}h1{font:700 50px Georgia,serif;color:#ffc52e;margin:0 0 15px}
-.hero p{max-width:800px;margin:auto;line-height:1.7}.books{padding:25px 0 60px}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;max-width:1050px;margin:auto}
-.card{border:1px solid #70520f;background:#0c0b08;border-radius:10px;overflow:hidden;box-shadow:0 15px 35px #000}
-.cover{display:block;width:100%;height:auto;background:#000}.body{padding:18px}small{font-weight:bold;text-transform:uppercase;letter-spacing:2px;color:#dca814}
-.body h2{font:700 27px Georgia,serif;color:#f2c54a;margin:7px 0}.body p{font-size:13px;line-height:1.5;color:#d8c995}
-.buttons{display:flex;gap:8px;margin-top:15px}.buttons span{border:1px solid #806018;border-radius:5px;padding:7px 10px;font-size:11px;color:#bfa557}
-.future{max-width:1050px;margin:32px auto 0;border:1px dashed #806018;padding:24px;text-align:center;border-radius:10px;line-height:1.7}
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr);max-width:720px}}
-@media(max-width:560px){nav{display:none}.grid{grid-template-columns:1fr;max-width:400px}h1{font-size:40px}}
+<!doctype html>
+<html lang="sq">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YZWEVPX5D3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-@media(min-width:901px){
-  .grid article:nth-child(4){grid-column:1 / 2; transform:translateX(50%)}
-  .grid article:nth-child(5){grid-column:2 / 3; transform:translateX(50%)}
-}
-
-</style></head><body>
-<header><div class="wrap"><b>Seria e Fikhut</b><nav><a href="#librat">Librat</a><a href="#rreth">Rreth projektit</a></nav></div></header>
-<section class="hero"><div class="wrap"><h1>Vëllimet</h1><p>Pesë vëllimet e para të Serisë së Fikhut. Biblioteka është përgatitur që të zgjerohet më vonë me pjesët e tjera të fikhut, përfshirë tregtinë dhe vëllimet pasuese.</p></div></section>
-<section class="books" id="librat"><div class="wrap"><div class="grid"><article class="card"><img class="cover" src="assets/pastertia.png" alt="Pastërtia">
-<div class="body"><small>Vëllimi I</small><h2>Pastërtia</h2><p>Në përgatitje për publikim elektronik.</p>
-<div class="buttons"><span>Lexo online</span><span>PDF</span><span>EPUB</span></div></div></article><article class="card"><img class="cover" src="assets/namazi.png" alt="Namazi">
-<div class="body"><small>Vëllimi II</small><h2>Namazi</h2><p>Në përgatitje për publikim elektronik.</p>
-<div class="buttons"><span>Lexo online</span><span>PDF</span><span>EPUB</span></div></div></article><article class="card"><img class="cover" src="assets/zekati.png" alt="Zekati">
-<div class="body"><small>Vëllimi III</small><h2>Zekati</h2><p>Në përgatitje për publikim elektronik.</p>
-<div class="buttons"><span>Lexo online</span><span>PDF</span><span>EPUB</span></div></div></article><article class="card"><img class="cover" src="assets/agjerimi.png" alt="Agjërimi">
-<div class="body"><small>Vëllimi IV</small><h2>Agjërimi</h2><p>Në përgatitje për publikim elektronik.</p>
-<div class="buttons"><span>Lexo online</span><span>PDF</span><span>EPUB</span></div></div></article><article class="card"><img class="cover" src="assets/haxhi.png" alt="Haxhi">
-<div class="body"><small>Vëllimi V</small><h2>Haxhi</h2><p>Në përgatitje për publikim elektronik.</p>
-<div class="buttons"><span>Lexo online</span><span>PDF</span><span>EPUB</span></div></div></article></div>
-<div class="future"><b>Seria vazhdon.</b><br>Këtu do të shtohen vëllimet e ardhshme, përfshirë pjesët mbi tregtinë (muamelatet) dhe temat e tjera.</div></div></section>
+  gtag('config', 'G-YZWEVPX5D3');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Seria e Fikhut – libra elektronikë falas në gjuhën shqipe.">
+<title>Seria e Fikhut</title>
+<style>
+:root{--bg:#050505;--panel:#0d0c0a;--gold:#c9951e;--gold2:#f0c84b;--text:#f3ead1;--muted:#b8aa88;--line:#b88a204f}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,"Times New Roman",serif}
+.wrap{width:min(1180px,calc(100% - 36px));margin:auto}
+header{position:sticky;top:0;z-index:30;background:#050505ee;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font-size:24px;font-weight:700;color:var(--gold2);text-decoration:none}
+.navlinks{display:flex;gap:28px;font:14px Arial,sans-serif}.navlinks a{text-decoration:none;color:#eee5cf}.navlinks a:hover{color:var(--gold2)}
+.hero{background:radial-gradient(circle at 80% 40%,#9e731b28 0,transparent 28%),linear-gradient(180deg,#0c0b09,#050505);border-bottom:1px solid var(--line);padding:72px 0 62px}
+.heroGrid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:54px}
+.eyebrow{font:700 12px Arial,sans-serif;text-transform:uppercase;letter-spacing:3px;color:var(--gold2)}
+h1{font-size:64px;line-height:1.02;margin:14px 0 18px;color:var(--gold2)}
+.hero p{font-size:19px;line-height:1.75;color:#e4d8b9;margin:0;max-width:620px}
+.heroCover{display:flex;justify-content:center}.heroCover img{width:min(390px,100%);display:block;box-shadow:0 25px 55px #000}
+.pill{display:inline-block;margin-top:22px;border:1px solid #d5a52a80;border-radius:999px;padding:10px 16px;font:13px Arial,sans-serif;color:#efd578}
+section{padding:68px 0}.sectionTitle{text-align:center;margin-bottom:38px}
+.sectionTitle h2{font-size:40px;color:var(--gold2);margin:0 0 10px}.sectionTitle p{max-width:820px;margin:auto;font:15px/1.7 Arial,sans-serif;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
+.card{background:linear-gradient(180deg,#13110d,#0b0a08);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 16px 36px #0008}
+.cover{background:#020202;aspect-ratio:2/3;overflow:hidden}.cover img{width:100%;height:100%;object-fit:cover;display:block}
+.cardbody{padding:16px}.vol{font:700 10px Arial,sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
+.card h3{font-size:21px;margin:7px 0 9px;color:#f2d26d}.status{font:12px/1.5 Arial,sans-serif;color:#bfb49c}
+.actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}.btn{padding:7px 9px;border:1px solid #b88a20;border-radius:6px;font:11px Arial,sans-serif;color:#ead083;opacity:.5}
+.future{margin-top:32px;padding:26px;text-align:center;border:1px dashed #b88a206b;border-radius:12px;background:#b88a2009;color:#c9b98e;font:14px/1.7 Arial,sans-serif}.future strong{color:#efd36f}
+.about{background:linear-gradient(180deg,#0c0b09,#090806);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.aboutGrid{display:grid;grid-template-columns:1fr 1fr;gap:30px}.infoBox{border:1px solid var(--line);background:#0e0d0b;border-radius:12px;padding:28px}
+.infoBox h2,.infoBox h3{margin-top:0;color:var(--gold2)}.infoBox p{font:15px/1.75 Arial,sans-serif;color:#c8bba0}
+.contact{text-align:center}.contact h2{font-size:34px;color:var(--gold2);margin-bottom:8px}.contact p{font:14px Arial,sans-serif;color:#bfb49a}
+footer{border-top:1px solid var(--line);padding:24px 0;color:#968b72;font:12px Arial,sans-serif}.foot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+@media(max-width:1050px){.grid{grid-template-columns:repeat(3,1fr)}} @media(max-width:760px){.heroGrid,.aboutGrid{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}h1{font-size:48px}}
+@media(max-width:520px){.navlinks{display:none}.grid{grid-template-columns:1fr}.hero{padding:50px 0}.heroCover img{width:min(330px,100%)}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="brand" href="#krye">Seria e Fikhut</a><nav class="navlinks"><a href="#librat">Librat</a><a href="#rreth">Rreth projektit</a></nav></div></header>
+<main id="krye">
+<section class="hero"><div class="wrap heroGrid"><div><div class="eyebrow">Bibliotekë elektronike falas</div><h1>Seria e Fikhut</h1><p>Faqja zyrtare për versionet elektronike të serisë. Librat do të ofrohen falas për lexim dhe shkarkim, ndërsa versionet elektronike mund të përditësohen kur bëhen korrigjime.</p><div class="pill">Lexo online • PDF • EPUB • Versione të përditësuara</div></div><div class="heroCover"><img src="assets/pastertia.png" alt="Kopertina origjinale e vëllimit Pastërtia"></div></div></section>
+<section id="librat"><div class="wrap"><div class="sectionTitle"><h2>Vëllimet</h2><p>Pesë vëllimet e para të Serisë së Fikhut. Biblioteka është përgatitur që të zgjerohet më vonë me pjesët e tjera të fikhut, përfshirë tregtinë dhe vëllimet pasuese.</p></div>
+<div class="grid">
+<article class="card"><div class="cover"><img src="assets/pastertia.png" alt="Pastërtia"></div><div class="cardbody"><div class="vol">Vëllimi I</div><h3>Pastërtia</h3><div class="status">Në përgatitje për publikim elektronik.</div><div class="actions"><span class="btn">Lexo online</span><span class="btn">PDF</span><span class="btn">EPUB</span></div></div></article>
+<article class="card"><div class="cover"><img src="assets/namazi.png" alt="Namazi"></div><div class="cardbody"><div class="vol">Vëllimi II</div><h3>Namazi</h3><div class="status">Në përgatitje për publikim elektronik.</div><div class="actions"><span class="btn">Lexo online</span><span class="btn">PDF</span><span class="btn">EPUB</span></div></div></article>
+<article class="card"><div class="cover"><img src="assets/zekati.png" alt="Zekati"></div><div class="cardbody"><div class="vol">Vëllimi III</div><h3>Zekati</h3><div class="status">Në përgatitje për publikim elektronik.</div><div class="actions"><span class="btn">Lexo online</span><span class="btn">PDF</span><span class="btn">EPUB</span></div></div></article>
+<article class="card"><div class="cover"><img src="assets/agjerimi.png" alt="Agjërimi"></div><div class="cardbody"><div class="vol">Vëllimi IV</div><h3>Agjërimi</h3><div class="status">Në përgatitje për publikim elektronik.</div><div class="actions"><span class="btn">Lexo online</span><span class="btn">PDF</span><span class="btn">EPUB</span></div></div></article>
+<article class="card"><div class="cover"><img src="assets/haxhi.png" alt="Haxhi"></div><div class="cardbody"><div class="vol">Vëllimi V</div><h3>Haxhi</h3><div class="status">Në përgatitje për publikim elektronik.</div><div class="actions"><span class="btn">Lexo online</span><span class="btn">PDF</span><span class="btn">EPUB</span></div></div></article>
+</div>
+<div class="future"><strong>Seria vazhdon.</strong><br>Këtu do të shtohen vëllimet e ardhshme, përfshirë pjesët mbi tregtinë (muamelatet) dhe temat e tjera, pa pasur nevojë të ndryshohet struktura e faqes.</div>
+</div></section>
+<section class="about" id="rreth"><div class="wrap aboutGrid"><div class="infoBox"><h2>Rreth projektit</h2><p>Kjo faqe do të jetë pika zyrtare ku gjenden versionet më të fundit të librave. Kopertinat origjinale të botimit përdoren në faqe pa u ridizajnuar.</p></div><div class="infoBox"><h3>Versionet elektronike</h3><p>Versioni elektronik mund të përditësohet kur vërehet një gabim ose bëhet një korrigjim, duke ruajtur të njëjtën adresë të faqes.</p></div></div></section>
+</main>
+<footer><div class="wrap foot"><span>© 2026 Seria e Fikhut</span><span>Versionet elektronike ofrohen falas</span></div></footer>
 </body></html>
