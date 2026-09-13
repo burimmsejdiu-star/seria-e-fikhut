@@ -12,7 +12,7 @@
 .running-header{position:sticky;top:68px;z-index:30;background:#fffefaeF;color:#111;border-bottom:1px solid #d9d2c1;padding:10px 18px;text-align:right;box-shadow:0 2px 10px #0001}.hdr-line{font-size:13px;line-height:1.2;font-weight:700}.hdr-line.ar{font-family:"Traditional Arabic","Amiri","Noto Naskh Arabic",serif;font-size:17px}.book{background:var(--paper);color:var(--ink);box-shadow:0 20px 55px #000b;border:1px solid #cfc4aa;padding:clamp(28px,5vw,72px);min-height:80vh}.front-page{min-height:1050px;padding-bottom:50px;border-bottom:1px solid #ddd;margin-bottom:45px}.front-line{font:700 18px/1.45 Arial,sans-serif;margin:0 0 12px}.front-line.center{text-align:center}.front-line.right{text-align:right}.front-line.arabic{font:700 22px/1.5 "Traditional Arabic","Amiri","Noto Naskh Arabic",serif}.front-line:nth-child(1),.front-line:nth-child(2),.front-line:nth-child(3),.front-line:nth-child(4),.front-line:nth-child(5),.front-line:nth-child(6){text-align:center}
 .toc-page-block{margin:10px 0 60px}.toc-page-block h1{text-align:center;font:700 25px Arial,sans-serif;margin:0 0 24px}.toc-entry{display:flex;align-items:flex-end;gap:7px;text-decoration:none;color:#111;font:14px/1.35 Arial,sans-serif;padding:5px 0}.toc-entry.level-1{font-weight:700;margin-top:9px}.toc-entry.level-2{padding-left:18px}.toc-text{max-width:88%}.dots{flex:1;border-bottom:1px dotted #777;transform:translateY(-4px)}.toc-page{min-width:28px;text-align:right}
 .book-p{font:18px/1.55 Arial,sans-serif;margin:0 0 14px}.book-p.justify{text-align:justify}.book-p.center{text-align:center}.book-p.right{text-align:right}.book-p.arabic{font:21px/1.65 "Traditional Arabic","Amiri","Noto Naskh Arabic",serif}.source-title-pair{text-align:center;margin:42px 0 28px;break-inside:avoid;page-break-inside:avoid;scroll-margin-top:170px}.source-title-pair.h1{margin-top:54px}.source-arabic{font:700 24px/1.45 "Traditional Arabic","Amiri","Noto Naskh Arabic",serif;margin-bottom:12px}.source-albanian{font:700 20px/1.35 Arial,sans-serif}.source-title-pair.h1 .source-albanian{font-size:22px}.solo-heading{font:700 20px/1.4 Arial,sans-serif;text-align:center;margin:42px 0 24px;scroll-margin-top:170px}.reader-footer{position:sticky;bottom:0;background:#fffefaf3;color:#555;border-top:1px solid #d9d2c1;padding:8px 18px;display:flex;justify-content:space-between;font:12px Arial,sans-serif}#origPage{font-weight:700;color:#333}
-#results{display:none;background:#12100c;border:1px solid var(--line);border-radius:7px;max-height:38vh;overflow:auto;margin:8px 0}#results.show{display:block}.res{display:block;padding:9px;border-bottom:1px solid #b88a2025;color:#d7c9aa;text-decoration:none;font:11px/1.4 Arial,sans-serif}.res:hover{color:#f2d36f}.progress{position:fixed;top:67px;left:0;height:3px;background:var(--gold2);z-index:100;width:0}
+#results{display:none;background:#12100c;border:1px solid var(--line);border-radius:7px;max-height:42vh;overflow:auto;margin:8px 0}#results.show{display:block}.search-meta{padding:8px 9px;border-bottom:1px solid #b88a2025;color:#9f9276;font:10px/1.35 Arial,sans-serif}.res{display:block;padding:9px;border-bottom:1px solid #b88a2025;color:#d7c9aa;text-decoration:none;font:11px/1.45 Arial,sans-serif}.res:hover{color:#f2d36f;background:#18150f}.res mark{background:#d4aa3a;color:#0a0907;border-radius:2px;padding:0 1px}.res-page{display:block;margin-top:4px;color:#8f805f;font:10px Arial,sans-serif}.progress{position:fixed;top:67px;left:0;height:3px;background:var(--gold2);z-index:100;width:0}
 @media(max-width:920px){.layout{grid-template-columns:1fr}.side{position:fixed;left:0;top:68px;width:min(88vw,360px);z-index:80;transform:translateX(-105%);transition:.2s;box-shadow:20px 0 40px #000d}.side.open{transform:none}.crumb{display:none}.pdf-view{height:calc(100vh - 118px)}}@media(min-width:921px){#tocBtn{display:none}}@media(max-width:600px){.main{padding:10px 6px 45px}.book{padding:30px 20px}.front-page{min-height:auto}.book-p{font-size:16.5px}.source-arabic{font-size:21px}.source-albanian{font-size:18px}.running-header{top:68px;padding:7px 10px}.hdr-line{font-size:10px}.hdr-line.ar{font-size:14px}}
 </style></head><body>
 <div class="top"><button id="tocBtn">☰ Përmbajtja</button><a class="brand" href="index.html">Seria e Fikhut</a><span class="crumb">Pastërtia · Vëllimi I</span><span class="grow"></span><button id="pdfBtn" class="active">Pamja e librit</button><button id="textBtn">Teksti i strukturuar</button></div><div class="progress" id="progress"></div>
@@ -7258,8 +7258,56 @@ const pdfBtn=document.getElementById('pdfBtn'),textBtn=document.getElementById('
 function mode(m){const pdf=m==='pdf';pdfView.style.display=pdf?'block':'none';textView.style.display=pdf?'none':'block';pdfBtn.classList.toggle('active',pdf);textBtn.classList.toggle('active',!pdf);note.textContent=pdf?'Pamja e librit ruan faqosjen, header-in, footer-in dhe vendosjen e titujve si në dokumentin final.':'Teksti i strukturuar ruan rendin e dokumentit dhe bashkon titujt arabisht + shqip si një bllok; ky version përdoret për kërkim dhe navigim.';localStorage.setItem('sf_pastertia_mode',m);if(typeof gtag==='function')gtag('event','reader_mode',{book:'pastertia',mode:m})}
 pdfBtn.onclick=()=>mode('pdf');textBtn.onclick=()=>mode('text');mode(localStorage.getItem('sf_pastertia_mode')||'pdf');
 document.getElementById('tocBtn').onclick=()=>side.classList.toggle('open');document.querySelectorAll('[data-nav]').forEach(a=>a.onclick=()=>{mode('text');side.classList.remove('open')});
-function norm(s){return(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[ؐ-ًؚ-ٰٟۖ-ۭـ]/g,'').replace(/\s+/g,' ').trim()}function esc(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
-const q=document.getElementById('q'),results=document.getElementById('results'),searchables=[...document.querySelectorAll('[data-search],.source-title-pair,.solo-heading')];q.oninput=()=>{let n=norm(q.value);results.innerHTML='';if(n.length<2){results.classList.remove('show');return}let hits=[];for(let e of searchables){if(norm(e.textContent).includes(n))hits.push(e);if(hits.length>=40)break}results.classList.add('show');if(!hits.length)results.innerHTML='<div class="res">Nuk u gjet rezultat.</div>';else hits.forEach(e=>{let a=document.createElement('a');a.className='res';a.href='#'+e.id;a.textContent=e.textContent.trim().slice(0,180)+(e.textContent.trim().length>180?'…':'');a.onclick=()=>{mode('text');side.classList.remove('open')};results.appendChild(a)});if(typeof gtag==='function')gtag('event','book_search',{book:'pastertia',results_count:hits.length})};
+function norm(s){return(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[\u0610-\u061a\u064b-\u065f\u0670\u06d6-\u06ed\u0640]/g,'').replace(/\s+/g,' ').trim()}
+function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function pageFor(e){let x=e.closest('[data-page]')||e.previousElementSibling;while(x&&!x.dataset?.page)x=x.previousElementSibling;return x&&x.dataset?pageForValue(x.dataset.page):''}
+function pageForValue(v){return v?('Faqja origjinale: '+v):''}
+function makeSnippet(raw,terms){
+  raw=(raw||'').replace(/\s+/g,' ').trim();
+  if(!raw)return '';
+  let nr=norm(raw),positions=terms.map(t=>nr.indexOf(t)).filter(i=>i>=0),pos=positions.length?Math.min(...positions):0;
+  let approx=Math.max(0,pos-75),end=Math.min(raw.length,approx+240),snippet=raw.slice(approx,end);
+  if(approx>0)snippet='…'+snippet;if(end<raw.length)snippet+='…';
+  let html=esc(snippet);
+  let rawTerms=[...new Set(terms)].sort((a,b)=>b.length-a.length);
+  for(let t of rawTerms){
+    if(!t)continue;
+    let variants=t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    try{html=html.replace(new RegExp('('+variants+')','ig'),'<mark>$1</mark>')}catch(_){}
+  }
+  return html;
+}
+const q=document.getElementById('q'),results=document.getElementById('results'),searchables=[...document.querySelectorAll('[data-search],.source-title-pair,.solo-heading')];
+q.setAttribute('title','Shkruaj disa fjalë, ose vendose frazën në thonjëza për kërkim të saktë.');
+q.oninput=()=>{
+  let raw=q.value.trim(),quoted=raw.length>1&&raw.startsWith('"')&&raw.endsWith('"'),clean=quoted?raw.slice(1,-1):raw,n=norm(clean);
+  results.innerHTML='';
+  if(n.length<2){results.classList.remove('show');return}
+  let terms=quoted?[n]:n.split(' ').filter(Boolean),hits=[];
+  for(let e of searchables){
+    let ne=norm(e.textContent);
+    let ok=quoted?ne.includes(n):terms.every(t=>ne.includes(t));
+    if(ok)hits.push(e)
+  }
+  results.classList.add('show');
+  let meta=document.createElement('div');meta.className='search-meta';
+  meta.textContent=hits.length+' rezultat'+(hits.length===1?'':'e')+(quoted?' · frazë e saktë':' · të gjitha fjalët');
+  results.appendChild(meta);
+  if(!hits.length){
+    let d=document.createElement('div');d.className='res';d.textContent='Nuk u gjet rezultat.';results.appendChild(d)
+  }else{
+    hits.slice(0,60).forEach(e=>{
+      let a=document.createElement('a');a.className='res';a.href='#'+e.id;
+      a.innerHTML=makeSnippet(e.textContent,terms)+(pageFor(e)?'<span class="res-page">'+esc(pageFor(e))+'</span>':'');
+      a.onclick=()=>{mode('text');side.classList.remove('open');setTimeout(()=>e.scrollIntoView({behavior:'smooth',block:'center'}),30)};
+      results.appendChild(a)
+    });
+    if(hits.length>60){
+      let d=document.createElement('div');d.className='search-meta';d.textContent='Po shfaqen 60 rezultatet e para.';results.appendChild(d)
+    }
+  }
+  if(typeof gtag==='function')gtag('event','book_search',{book:'pastertia',results_count:hits.length,exact_phrase:quoted})
+};
 const p=document.getElementById('progress');window.addEventListener('scroll',()=>{if(textView.style.display==='none')return;let h=document.documentElement.scrollHeight-innerHeight;p.style.width=(h?Math.min(100,scrollY/h*100):0)+'%'},{passive:true});
 const orig=document.getElementById('origPage');let heads=[...document.querySelectorAll('[data-page]')].filter(x=>x.dataset.page);let obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&e.target.dataset.page)orig.textContent='Faqja origjinale: '+e.target.dataset.page}),{rootMargin:'-20% 0px -70% 0px'});heads.forEach(h=>obs.observe(h));if(typeof gtag==='function')gtag('event','book_open',{book:'pastertia',format:'online_v2'});
 </script></body></html>
