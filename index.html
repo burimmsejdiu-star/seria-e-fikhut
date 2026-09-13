@@ -32,21 +32,37 @@ h1{font-size:64px;line-height:1.02;margin:14px 0 18px;color:var(--gold2)}
 .pill{display:inline-block;margin-top:22px;border:1px solid #d5a52a80;border-radius:999px;padding:10px 16px;font:13px Arial,sans-serif;color:#efd578}
 section{padding:68px 0}.sectionTitle{text-align:center;margin-bottom:38px}
 .sectionTitle h2{font-size:40px;color:var(--gold2);margin:0 0 10px}.sectionTitle p{max-width:820px;margin:auto;font:15px/1.7 Arial,sans-serif;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
-.card{background:linear-gradient(180deg,#13110d,#0b0a08);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 16px 36px #0008}
-.cover{background:#020202;aspect-ratio:2/3;overflow:hidden}.cover img{width:100%;height:100%;object-fit:cover;display:block}
+.grid{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;max-width:1080px;margin:auto}
+.card{flex:0 1 330px;width:100%;max-width:330px;background:linear-gradient(180deg,#13110d,#0b0a08);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 16px 36px #0008}
+.cover{background:#020202;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;overflow:hidden}.cover img{width:100%;height:100%;object-fit:contain;display:block}
 .cardbody{padding:16px}.vol{font:700 10px Arial,sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
 .card h3{font-size:21px;margin:7px 0 9px;color:#f2d26d}.status{font:12px/1.5 Arial,sans-serif;color:#bfb49c}
-.actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}.btn{padding:7px 9px;border:1px solid #b88a20;border-radius:6px;font:11px Arial,sans-serif;color:#ead083;opacity:.5}
+.actions{display:flex;gap:8px;margin-top:14px}.btn{padding:7px 9px;border:1px solid #b88a20;border-radius:6px;font:11px Arial,sans-serif;color:#ead083;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;text-decoration:none;line-height:1}
 .future{margin-top:32px;padding:26px;text-align:center;border:1px dashed #b88a206b;border-radius:12px;background:#b88a2009;color:#c9b98e;font:14px/1.7 Arial,sans-serif}.future strong{color:#efd36f}
 .about{background:linear-gradient(180deg,#0c0b09,#090806);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .aboutGrid{display:grid;grid-template-columns:1fr 1fr;gap:30px}.infoBox{border:1px solid var(--line);background:#0e0d0b;border-radius:12px;padding:28px}
 .infoBox h2,.infoBox h3{margin-top:0;color:var(--gold2)}.infoBox p{font:15px/1.75 Arial,sans-serif;color:#c8bba0}
 .contact{text-align:center}.contact h2{font-size:34px;color:var(--gold2);margin-bottom:8px}.contact p{font:14px Arial,sans-serif;color:#bfb49a}
 footer{border-top:1px solid var(--line);padding:24px 0;color:#968b72;font:12px Arial,sans-serif}.foot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-@media(max-width:1050px){.grid{grid-template-columns:repeat(3,1fr)}} @media(max-width:760px){.heroGrid,.aboutGrid{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}h1{font-size:48px}}
-@media(max-width:520px){.navlinks{display:none}.grid{grid-template-columns:1fr}.hero{padding:50px 0}.heroCover img{width:min(330px,100%)}}
-</style>
+@media(max-width:760px){.heroGrid,.aboutGrid{grid-template-columns:1fr}h1{font-size:48px}.card{flex-basis:300px;max-width:300px}}@media(max-width:520px){.navlinks{display:none}.hero{padding:50px 0}.heroCover img{width:min(330px,100%)}.card{flex-basis:100%;max-width:340px}}
+@media(max-width:520px){
+  .actions{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+
+  .actions .btn{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    white-space:nowrap;
+    text-decoration:none;
+    line-height:1.2;
+    box-sizing:border-box;
+  }
+}</style>
 </head>
 <body>
 <header><div class="wrap nav"><a class="brand" href="#krye">Seria e Fikhut</a><nav class="navlinks"><a href="#librat">Librat</a><a href="#rreth">Rreth projektit</a></nav></div></header>
@@ -54,7 +70,7 @@ footer{border-top:1px solid var(--line);padding:24px 0;color:#968b72;font:12px A
 <section class="hero"><div class="wrap heroGrid"><div><div class="eyebrow">Bibliotekë elektronike falas</div><h1>Seria e Fikhut</h1><p>Faqja zyrtare për versionet elektronike të serisë. Librat do të ofrohen falas për lexim dhe shkarkim, ndërsa versionet elektronike mund të përditësohen kur bëhen korrigjime.</p><div class="pill">Lexo online • PDF • EPUB • Versione të përditësuara</div></div><div class="heroCover"><img src="assets/pastertia.png" alt="Kopertina origjinale e vëllimit Pastërtia"></div></div></section>
 <section id="librat"><div class="wrap"><div class="sectionTitle"><h2>Vëllimet</h2><p>Pesë vëllimet e para të Serisë së Fikhut. Biblioteka është përgatitur që të zgjerohet më vonë me pjesët e tjera të fikhut, përfshirë tregtinë dhe vëllimet pasuese.</p></div>
 <div class="grid">
-<article class="card"><div class="cover"><img src="assets/pastertia.png" alt="Pastërtia"></div><div class="cardbody"><div class="vol">Vëllimi I</div><h3>Pastërtia</h3><div class="status">Në përgatitje për publikim elektronik.</div><div class="actions"><span class="btn">Lexo online</span><span class="btn">PDF</span><span class="btn">EPUB</span></div></div></article>
+<article class="card"><div class="cover"><img src="assets/pastertia.png" alt="Pastërtia"></div><div class="cardbody"><div class="vol">Vëllimi I</div><h3>Pastërtia</h3><div class="status">Në përgatitje për publikim elektronik.</div><div class="actions"><a class="btn" href="pastertia.html">Lexo online</a><a class="btn" href="pastertia.pdf" target="_blank">PDF</a><span class="btn">EPUB</span></div></div></article>
 <article class="card"><div class="cover"><img src="assets/namazi.png" alt="Namazi"></div><div class="cardbody"><div class="vol">Vëllimi II</div><h3>Namazi</h3><div class="status">Në përgatitje për publikim elektronik.</div><div class="actions"><span class="btn">Lexo online</span><span class="btn">PDF</span><span class="btn">EPUB</span></div></div></article>
 <article class="card"><div class="cover"><img src="assets/zekati.png" alt="Zekati"></div><div class="cardbody"><div class="vol">Vëllimi III</div><h3>Zekati</h3><div class="status">Në përgatitje për publikim elektronik.</div><div class="actions"><span class="btn">Lexo online</span><span class="btn">PDF</span><span class="btn">EPUB</span></div></div></article>
 <article class="card"><div class="cover"><img src="assets/agjerimi.png" alt="Agjërimi"></div><div class="cardbody"><div class="vol">Vëllimi IV</div><h3>Agjërimi</h3><div class="status">Në përgatitje për publikim elektronik.</div><div class="actions"><span class="btn">Lexo online</span><span class="btn">PDF</span><span class="btn">EPUB</span></div></div></article>
