@@ -12,15 +12,46 @@
 .running-header{position:sticky;top:68px;z-index:30;background:#fffefaeF;color:#111;border-bottom:1px solid #d9d2c1;padding:10px 18px;text-align:right;box-shadow:0 2px 10px #0001}.hdr-line{font-size:13px;line-height:1.2;font-weight:700}.hdr-line.ar{font-family:"Traditional Arabic","Amiri","Noto Naskh Arabic",serif;font-size:17px}.book{background:var(--paper);color:var(--ink);box-shadow:0 20px 55px #000b;border:1px solid #cfc4aa;padding:clamp(28px,5vw,72px);min-height:80vh}.front-page{min-height:1050px;padding-bottom:50px;border-bottom:1px solid #ddd;margin-bottom:45px}.front-line{font:700 18px/1.45 Arial,sans-serif;margin:0 0 12px}.front-line.center{text-align:center}.front-line.right{text-align:right}.front-line.arabic{font:700 22px/1.5 "Traditional Arabic","Amiri","Noto Naskh Arabic",serif}.front-line:nth-child(1),.front-line:nth-child(2),.front-line:nth-child(3),.front-line:nth-child(4),.front-line:nth-child(5),.front-line:nth-child(6){text-align:center}
 .toc-page-block{margin:10px 0 60px}.toc-page-block h1{text-align:center;font:700 25px Arial,sans-serif;margin:0 0 24px}.toc-entry{display:flex;align-items:flex-end;gap:7px;text-decoration:none;color:#111;font:14px/1.35 Arial,sans-serif;padding:5px 0}.toc-entry.level-1{font-weight:700;margin-top:9px}.toc-entry.level-2{padding-left:18px}.toc-text{max-width:88%}.dots{flex:1;border-bottom:1px dotted #777;transform:translateY(-4px)}.toc-page{min-width:28px;text-align:right}
 .book-p{font:18px/1.55 Arial,sans-serif;margin:0 0 14px}.book-p.justify{text-align:justify}.book-p.center{text-align:center}.book-p.right{text-align:right}.book-p.arabic{font:21px/1.65 "Traditional Arabic","Amiri","Noto Naskh Arabic",serif}.source-title-pair{text-align:center;margin:42px 0 28px;break-inside:avoid;page-break-inside:avoid;scroll-margin-top:170px}.source-title-pair.h1{margin-top:54px}.source-arabic{font:700 24px/1.45 "Traditional Arabic","Amiri","Noto Naskh Arabic",serif;margin-bottom:12px}.source-albanian{font:700 20px/1.35 Arial,sans-serif}.source-title-pair.h1 .source-albanian{font-size:22px}.solo-heading{font:700 20px/1.4 Arial,sans-serif;text-align:center;margin:42px 0 24px;scroll-margin-top:170px}.reader-footer{position:sticky;bottom:0;background:#fffefaf3;color:#555;border-top:1px solid #d9d2c1;padding:8px 18px;display:flex;justify-content:space-between;font:12px Arial,sans-serif}#origPage{font-weight:700;color:#333}
-#results{display:none;background:#12100c;border:1px solid var(--line);border-radius:7px;max-height:42vh;overflow:auto;margin:8px 0}#results.show{display:block}.search-meta{padding:8px 9px;border-bottom:1px solid #b88a2025;color:#9f9276;font:10px/1.35 Arial,sans-serif}.res{display:block;padding:9px;border-bottom:1px solid #b88a2025;color:#d7c9aa;text-decoration:none;font:11px/1.45 Arial,sans-serif}.res:hover{color:#f2d36f;background:#18150f}.res mark{background:#d4aa3a;color:#0a0907;border-radius:2px;padding:0 1px}.res-page{display:block;margin-top:4px;color:#8f805f;font:10px Arial,sans-serif}
-.resume-tool{display:inline-flex;align-items:center;gap:7px;opacity:.48;pointer-events:none}
-.resume-tool.ready{opacity:1;pointer-events:auto}
-.resume-status{position:fixed;right:18px;bottom:18px;z-index:120;background:#12100cf2;border:1px solid #9c741f;color:#ecd273;border-radius:8px;padding:9px 11px;font:11px Arial,sans-serif;box-shadow:0 10px 30px #0008;display:none}
-.resume-status.show{display:block}
-.progress{position:fixed;top:67px;left:0;height:3px;background:var(--gold2);z-index:100;width:0}
+
+.reader-tools{
+display:none;flex-wrap:wrap;gap:7px;
+margin:0 auto 12px;max-width:980px;
+position:sticky;top:54px;z-index:95;
+padding:8px 10px;
+background:rgba(7,7,6,.96);
+border:1px solid #8d681f;
+border-radius:8px;
+box-shadow:0 6px 18px rgba(0,0,0,.35);
+}
+body.reader-online .reader-tools{display:flex!important}.reader-tools button{font-size:11px;padding:8px 10px}
+.reader-tools .primary{background:#ad8427;color:#090806;font-weight:700}
+.reader-panel{display:none;max-width:980px;margin:0 auto 12px;background:#12100c;border:1px solid var(--line);border-radius:8px;padding:12px;color:#e6d8b9;font:12px/1.45 Arial,sans-serif}
+.reader-panel.show{display:block}.reader-panel h4{margin:0 0 8px;color:#f0c84b}
+.reader-list{display:flex;flex-direction:column;gap:6px;max-height:280px;overflow:auto}
+.reader-item{padding:8px;border:1px solid #b88a2025;border-radius:6px;background:#0d0c0a}
+.reader-item a{color:#ecd273;text-decoration:none}.reader-item small{display:block;color:#9f9276;margin-top:3px}
+.reader-item-actions{display:flex;gap:6px;margin-top:6px}.reader-item-actions button{padding:5px 7px;font-size:10px}
+.reader-input{width:100%;padding:8px;background:#0b0a08;border:1px solid #8d681f;color:#f5ead1;border-radius:6px;outline:none;font:12px Arial,sans-serif}
+.reader-note-area{width:100%;min-height:100px;resize:vertical;margin-top:7px;padding:8px;background:#0b0a08;border:1px solid #8d681f;color:#f5ead1;border-radius:6px;font:12px/1.4 Arial,sans-serif}
+
+.reader-help-overlay{display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.78);padding:24px;overflow:auto}
+.reader-help-overlay.show{display:flex;align-items:flex-start;justify-content:center}
+.reader-help-modal{width:min(760px,100%);margin:45px auto;background:#12100c;border:1px solid #a77b1e;border-radius:10px;color:#eadfca;box-shadow:0 18px 55px rgba(0,0,0,.65);font:13px/1.55 Arial,sans-serif}
+.reader-help-head{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid #6f5218}
+.reader-help-head h3{margin:0;color:#f0c84b;font-size:17px}.reader-help-head .grow{flex:1}
+.reader-help-close{font-size:18px;padding:5px 10px}
+.reader-help-body{padding:16px}.reader-help-body p{margin:0 0 12px}
+.reader-help-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px}
+.reader-help-item{padding:9px 10px;border:1px solid #6f521855;border-radius:7px;background:#0c0b09}
+.reader-help-item b{color:#f0c84b}.reader-help-note{margin-top:14px;padding:11px;border-left:3px solid #c79624;background:#0b0a08;color:#cfc1a5}
+@media(max-width:650px){.reader-help-overlay{padding:10px}.reader-help-modal{margin:18px auto}.reader-help-grid{grid-template-columns:1fr}}
+.reader-status{position:fixed;right:18px;bottom:18px;z-index:150;background:#12100cf2;border:1px solid #9c741f;color:#ecd273;border-radius:8px;padding:9px 11px;font:11px Arial,sans-serif;display:none;box-shadow:0 10px 30px #0008}
+.reader-status.show{display:block}.reader-nav{max-width:980px;margin:22px auto 0;display:flex;justify-content:space-between;gap:8px}.reader-nav button{flex:1}
+@media(max-width:600px){.reader-tools{top:52px;padding:6px}.reader-tools button{flex:1 1 auto}.reader-nav{flex-direction:column}}
+#results{display:none;background:#12100c;border:1px solid var(--line);border-radius:7px;max-height:42vh;overflow:auto;margin:8px 0}#results.show{display:block}.search-meta{padding:8px 9px;border-bottom:1px solid #b88a2025;color:#9f9276;font:10px/1.35 Arial,sans-serif}.res{display:block;padding:9px;border-bottom:1px solid #b88a2025;color:#d7c9aa;text-decoration:none;font:11px/1.45 Arial,sans-serif}.res:hover{color:#f2d36f;background:#18150f}.res mark{background:#d4aa3a;color:#0a0907;border-radius:2px;padding:0 1px}.res-page{display:block;margin-top:4px;color:#8f805f;font:10px Arial,sans-serif}.progress{position:fixed;top:67px;left:0;height:3px;background:var(--gold2);z-index:100;width:0}
 @media(max-width:920px){.layout{grid-template-columns:1fr}.side{position:fixed;left:0;top:68px;width:min(88vw,360px);z-index:80;transform:translateX(-105%);transition:.2s;box-shadow:20px 0 40px #000d}.side.open{transform:none}.crumb{display:none}.pdf-view{height:calc(100vh - 118px)}}@media(min-width:921px){#tocBtn{display:none}}@media(max-width:600px){.main{padding:10px 6px 45px}.book{padding:30px 20px}.front-page{min-height:auto}.book-p{font-size:16.5px}.source-arabic{font-size:21px}.source-albanian{font-size:18px}.running-header{top:68px;padding:7px 10px}.hdr-line{font-size:10px}.hdr-line.ar{font-size:14px}}
 </style></head><body>
-<div class="top"><button id="tocBtn">☰ Përmbajtja</button><a class="brand" href="index.html">Seria e Fikhut</a><span class="crumb">Pastërtia · Vëllimi I</span><span class="grow"></span><button id="resumeBtn" class="resume-tool" title="Vazhdo nga vendi i fundit">Vazhdo leximin</button><button id="pdfBtn" class="active">Pamja e librit</button><button id="textBtn">Teksti i strukturuar</button></div><div class="progress" id="progress"></div><div class="resume-status" id="resumeStatus">Vendi i leximit u ruajt.</div>
+<div class="top"><button id="tocBtn">☰ Përmbajtja</button><a class="brand" href="index.html">Seria e Fikhut</a><span class="crumb">Pastërtia · Vëllimi I</span><span class="grow"></span><button id="resumeBtn" title="Vazhdo nga vendi i fundit">Vazhdo leximin</button><button id="pdfBtn">Shiko PDF</button><button id="textBtn" class="active">Lexo online</button></div><div class="progress" id="progress"></div><div class="reader-status" id="readerStatus"></div>
 <div class="layout"><aside class="side" id="side"><h3>Kërko në tekst</h3><input class="search" id="q" placeholder="Fjalë ose frazë…"><div id="results"></div><h3>Përmbajtja e plotë</h3><a class="side-toc level-1" href="#_Toc240188633" data-nav><span>Libri mbi dispozitat e pastërtisë</span><b>13</b></a>
 <a class="side-toc level-2" href="#_Toc240188634" data-nav><span>Pastërtia është: largimi i papastërtisë rituale; largimi i asaj që merr gjykimin e saj; dhe largimi i papastërtisë fizike.</span><b>13</b></a>
 <a class="side-toc level-2" href="#_Toc240188635" data-nav><span>Ujërat ndahen në tri lloje:</span><b>16</b></a>
@@ -152,7 +183,40 @@
 <a class="side-toc level-2" href="#_Toc240188761" data-nav><span>Nëse gjatë kësaj periudhe gjaku i rikthehet, ai është i dyshimtë. Ajo agjëron dhe fal namazin, ndërsa agjërimin e detyrueshëm e kompenson.</span><b>390</b></a>
 <a class="side-toc level-2" href="#_Toc240188762" data-nav><span>Lehonia është si menstruacionet në ato çështje që lejohen, ndalohen, bëhen detyrim ose bien si detyrim, me përjashtim të iddetit (periudhës së pritjes pas shkurorëzimit) dhe arritjes së pubertetit.</span><b>390</b></a>
 <a class="side-toc level-2" href="#_Toc240188763" data-nav><span>Nëse lind binjakë, fillimi dhe fundi i lehonisë llogariten nga lindja e binjakut të parë.</span><b>391</b></a></aside>
-<main class="main"><div class="mode-note" id="note">Pamja e librit ruan faqosjen, header-in, footer-in dhe vendosjen e titujve si në dokumentin final.</div><section class="pdf-view" id="pdfView"><iframe id="pdfFrame" src="pastertia.pdf#view=FitH" title="Pastërtia – Vëllimi I"></iframe></section>
+
+<div class="reader-help-overlay" id="helpOverlay" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+  <div class="reader-help-modal">
+    <div class="reader-help-head">
+      <h3 id="helpTitle">❓ Si përdoret faqja</h3><span class="grow"></span>
+      <button class="reader-help-close" id="helpClose" aria-label="Mbyll">×</button>
+    </div>
+    <div class="reader-help-body">
+      <p>Këtu mund ta lexoni librin drejtpërdrejt në internet, pa pasur nevojë ta shkarkoni në telefon ose kompjuter.</p>
+      <div class="reader-help-grid">
+        <div class="reader-help-item"><b>📖 Lexo online</b><br>Hap tekstin e librit për lexim direkt në faqe.</div>
+        <div class="reader-help-item"><b>🔎 Kërko në tekst</b><br>Shkruaj një fjalë ose frazë për ta gjetur në libër.</div>
+        <div class="reader-help-item"><b>↩ Vazhdo leximin</b><br>Të kthen te vendi ku ke mbetur herën e fundit.</div>
+        <div class="reader-help-item"><b>🔖 Ruaj faqen</b><br>Ruaj pjesën ku ndodhesh që ta gjesh përsëri më vonë.</div>
+        <div class="reader-help-item"><b>📝 Shënim</b><br>Shkruaj një shënim personal për pjesën që po lexon.</div>
+        <div class="reader-help-item"><b>🔗 Cito këtë pjesë</b><br>Kopjon pjesën e zgjedhur bashkë me referencën dhe linkun.</div>
+        <div class="reader-help-item"><b>★ Të ruajturat</b><br>Shfaq pjesët që i ke ruajtur më parë.</div>
+        <div class="reader-help-item"><b>📝 Shënimet</b><br>Shfaq shënimet e tua personale.</div>
+        <div class="reader-help-item"><b>🖨 Printo pjesën</b><br>Hap për printim pjesën ku ndodhesh.</div>
+        <div class="reader-help-item"><b>💾 Ruaj / Rikthe të dhënat</b><br>Ruaj një kopje rezervë ose rikthe pjesët e ruajtura, shënimet dhe progresin në një pajisje tjetër.</div>
+        <div class="reader-help-item"><b>📄 Shiko PDF</b><br>Hap versionin e faqosur të librit. Për lexim të zakonshëm përdor “Lexo online”.</div>
+      </div>
+      <div class="reader-help-note"><b>Privatësia:</b> Progresi i leximit, pjesët e ruajtura dhe shënimet personale ruhen vetëm në browserin/pajisjen tuaj. Për t’i bartur në pajisje tjetër, përdorni “Ruaj / Rikthe të dhënat”.</div>
+    </div>
+  </div>
+</div>
+<main class="main"><div class="reader-tools" id="readerTools">
+<button id="bookmarkBtn">🔖 Ruaj faqen</button><button id="noteBtn">📝 Shënim</button><button id="citeBtn">🔗 Cito këtë pjesë</button><button id="printBtn">🖨 Printo pjesën</button><button id="savedBtn">★ Të ruajturat</button><button id="notesBtn">📝 Shënimet</button><button id="dataBtn">💾 Ruaj / Rikthe të dhënat</button><button id="helpBtn">❓ Si përdoret faqja</button>
+</div>
+<div class="reader-panel" id="notePanel"><h4>Shënim personal</h4><input class="reader-input" id="noteTitle" placeholder="Titulli i shënimit (opsionale)"><textarea class="reader-note-area" id="noteText" placeholder="Shkruaj shënimin..."></textarea><div style="margin-top:7px;display:flex;gap:7px"><button id="saveNoteBtn" class="primary">Ruaj shënimin</button><button id="cancelNoteBtn">Anulo</button></div></div>
+<div class="reader-panel" id="savedPanel"><h4>Bookmark-et / Të ruajturat</h4><div class="reader-list" id="savedList"></div></div>
+<div class="reader-panel" id="notesPanel"><h4>Shënimet personale</h4><div class="reader-list" id="notesList"></div></div>
+<div class="reader-panel" id="dataPanel"><h4>Ruaj / Rikthe të dhënat</h4><div style="display:flex;gap:7px;flex-wrap:wrap"><button id="exportBtn" class="primary">Ruaj kopje rezervë</button><button id="importBtn">Rikthe nga kopja rezervë</button><input id="importFile" type="file" accept=".json,application/json" style="display:none"></div><small style="display:block;margin-top:7px;color:#9f9276">Kopja rezervë përfshin pjesët e ruajtura, shënimet personale dhe progresin e leximit. Mund ta ruash dhe ta rikthesh më vonë në këtë ose në një pajisje tjetër.</small></div>
+<div class="mode-note" id="note">PDF-ja ruan faqosjen, header-in, footer-in dhe vendosjen e titujve si në dokumentin final. Për lexim pa shkarkim përdor “Lexo online”.</div><section class="pdf-view" id="pdfView"><iframe id="pdfFrame" src="pastertia.pdf#view=FitH" title="Pastërtia – Vëllimi I"></iframe></section>
 <section class="structured" id="textView"><div class="running-header"><div class="hdr-line ar" dir="rtl" lang="ar">زاد المستقنع في اختصار المقنع</div><div class="hdr-line sq" lang="sq">“Zad el-Mustakni‘” në përmbledhjen e “El-Mukni‘”</div><div class="hdr-line ar" dir="rtl" lang="ar">كِتَابُ الطَّهَارَةِ</div><div class="hdr-line sq" lang="sq">Libri mbi dispozitat e pastërtisë</div></div><article class="book"><section class="front-page"><p class="front-line center arabic" dir="rtl" lang="ar"><strong>بسم الله الرحمن الرحيم</strong></p>
 <p class="front-line center " lang="sq"><strong>Me emrin e Allahut, Mëshiruesit, Mëshirëplotit</strong></p>
 <p class="front-line center arabic" dir="rtl" lang="ar"><strong>كتاب العبادات</strong></p>
@@ -7257,30 +7321,28 @@
 <p id="p-7044" class="book-p " data-search lang="sq">Me këtë përfundon kapitulli mbi menstruacionet.</p>
 <p id="p-7045" class="book-p " data-search lang="sq">Në të vërtetë, sipas dijenisë sime, <strong>ky është një nga kapitujt më të vështirë të adhurimeve</strong>, si për ta përfytyruar ashtu edhe për ta kuptuar, për atë që dëshiron të shqyrtojë gjendjet e grave.</p>
 <p id="p-7046" class="book-p " data-search lang="sq">Shumica e çështjeve që trajtohen në këtë kapitull janë rregulla dhe shenja që përdoren kur ka kundërshtim ndërmjet treguesve.</p>
-<p id="p-7047" class="book-p " data-search lang="sq">Prandaj, ato kanë të bëjnë me <strong>peshimin dhe dhënien përparësi</strong> ndërmjet <strong>dallimit të gjakut</strong>, <strong>fillimit të menstruacioneve për herë të parë</strong>, <strong>zakonit të menstruacioneve</strong> dhe çështjeve të ngjashme.</p></article><div class="reader-footer"><span>Seria e Fikhut · Pastërtia · Vëllimi I</span><span id="origPage"></span></div></section></main></div>
+<p id="p-7047" class="book-p " data-search lang="sq">Prandaj, ato kanë të bëjnë me <strong>peshimin dhe dhënien përparësi</strong> ndërmjet <strong>dallimit të gjakut</strong>, <strong>fillimit të menstruacioneve për herë të parë</strong>, <strong>zakonit të menstruacioneve</strong> dhe çështjeve të ngjashme.</p></article><div class="reader-nav"><button id="prevChapter">← Kapitulli paraprak</button><button id="nextChapter">Kapitulli tjetër →</button></div><div class="reader-footer"><span>Seria e Fikhut · Pastërtia · Vëllimi I</span><span id="origPage"></span></div></section></main></div>
 <script>
 const pdfBtn=document.getElementById('pdfBtn'),textBtn=document.getElementById('textBtn'),pdfView=document.getElementById('pdfView'),textView=document.getElementById('textView'),note=document.getElementById('note'),side=document.getElementById('side');
-function mode(m){const pdf=m==='pdf';pdfView.style.display=pdf?'block':'none';textView.style.display=pdf?'none':'block';pdfBtn.classList.toggle('active',pdf);textBtn.classList.toggle('active',!pdf);note.textContent=pdf?'Pamja e librit ruan faqosjen, header-in, footer-in dhe vendosjen e titujve si në dokumentin final.':'Teksti i strukturuar ruan rendin e dokumentit dhe bashkon titujt arabisht + shqip si një bllok; ky version përdoret për kërkim dhe navigim.';localStorage.setItem('sf_pastertia_mode',m);if(typeof gtag==='function')gtag('event','reader_mode',{book:'pastertia',mode:m})}
-pdfBtn.onclick=()=>mode('pdf');textBtn.onclick=()=>mode('text');mode(localStorage.getItem('sf_pastertia_mode')||'pdf');
-document.getElementById('tocBtn').onclick=()=>side.classList.toggle('open');document.querySelectorAll('[data-nav]').forEach(a=>a.onclick=()=>{mode('text');side.classList.remove('open')});
-function norm(s){return(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[\u0610-\u061a\u064b-\u065f\u0670\u06d6-\u06ed\u0640]/g,'').replace(/\s+/g,' ').trim()}
-function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
-function pageFor(e){let x=e.closest('[data-page]')||e.previousElementSibling;while(x&&!x.dataset?.page)x=x.previousElementSibling;return x&&x.dataset?pageForValue(x.dataset.page):''}
-function pageForValue(v){return v?('Faqja origjinale: '+v):''}
-function makeSnippet(raw,terms){
-  raw=(raw||'').replace(/\s+/g,' ').trim();
-  if(!raw)return '';
-  let nr=norm(raw),positions=terms.map(t=>nr.indexOf(t)).filter(i=>i>=0),pos=positions.length?Math.min(...positions):0;
-  let approx=Math.max(0,pos-75),end=Math.min(raw.length,approx+240),snippet=raw.slice(approx,end);
-  if(approx>0)snippet='…'+snippet;if(end<raw.length)snippet+='…';
-  let html=esc(snippet);
-  let rawTerms=[...new Set(terms)].sort((a,b)=>b.length-a.length);
-  for(let t of rawTerms){
-    if(!t)continue;
-    let variants=t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-    try{html=html.replace(new RegExp('('+variants+')','ig'),'<mark>$1</mark>')}catch(_){}
+function mode(m){
+  const readerPanels=document.querySelectorAll('.reader-panel');
+  if(m==='pdf'){
+    document.body.classList.remove('reader-online');
+    pdfView.style.display='block';
+    textView.style.display='none';
+    pdfBtn.classList.add('active');
+    textBtn.classList.remove('active');
+    note.style.display='block';
+    readerPanels.forEach(x=>x.classList.remove('show'));
+  }else{
+    document.body.classList.add('reader-online');
+    pdfView.style.display='none';
+    textView.style.display='block';
+    pdfBtn.classList.remove('active');
+    textBtn.classList.add('active');
+    note.style.display='none';
   }
-  return html;
+  try{localStorage.setItem('sf_pastertia_mode',m)}catch(e){}
 }
 const q=document.getElementById('q'),results=document.getElementById('results'),searchables=[...document.querySelectorAll('[data-search],.source-title-pair,.solo-heading')];
 q.setAttribute('title','Shkruaj disa fjalë, ose vendose frazën në thonjëza për kërkim të saktë.');
@@ -7314,98 +7376,79 @@ q.oninput=()=>{
   if(typeof gtag==='function')gtag('event','book_search',{book:'pastertia',results_count:hits.length,exact_phrase:quoted})
 };
 
-const RESUME_KEY='sf_pastertia_resume_v2';
-const resumeBtn=document.getElementById('resumeBtn');
-const resumeStatus=document.getElementById('resumeStatus');
 
-function resumeRead(){
-  try{
-    const raw=localStorage.getItem(RESUME_KEY);
-    return raw?JSON.parse(raw):null;
-  }catch(_){ return null; }
-}
-function resumeWrite(data){
-  try{
-    localStorage.setItem(RESUME_KEY,JSON.stringify(data));
-    return true;
-  }catch(_){ return false; }
-}
-function resumeValid(r){
-  return !!(r && r.id && document.getElementById(r.id));
-}
-function resumeRefresh(){
-  const r=resumeRead();
-  const ok=resumeValid(r);
-  resumeBtn.classList.toggle('ready',ok);
-  if(ok){
-    const pct=Math.max(0,Math.min(100,Number(r.percent)||0));
-    resumeBtn.textContent='Vazhdo leximin · '+Math.round(pct)+'%';
-  }else{
-    resumeBtn.textContent='Vazhdo leximin';
-  }
-}
-function resumeAnchor(){
-  const els=[...document.querySelectorAll('#textView [data-search],#textView .source-title-pair,#textView .solo-heading')].filter(e=>e.id);
-  if(!els.length)return null;
-  const y=window.scrollY + 150;
-  let best=els[0];
-  for(const e of els){
-    if(e.offsetTop<=y) best=e;
-    else break;
-  }
-  return best;
-}
-let resumeTimer=0;
-let resumeLastId='';
-let resumeLastPct=-1;
-function resumeSave(){
-  if(getComputedStyle(textView).display==='none') return;
-  const e=resumeAnchor();
-  if(!e) return;
+/* Help / Si përdoret faqja */
+const helpBtn=document.getElementById('helpBtn');
+const helpOverlay=document.getElementById('helpOverlay');
+const helpClose=document.getElementById('helpClose');
+function openHelp(){helpOverlay.classList.add('show');document.body.style.overflow='hidden'}
+function closeHelp(){helpOverlay.classList.remove('show');document.body.style.overflow=''}
+helpBtn.onclick=openHelp;
+helpClose.onclick=closeHelp;
+helpOverlay.addEventListener('click',e=>{if(e.target===helpOverlay)closeHelp()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&helpOverlay.classList.contains('show'))closeHelp()});
 
-  const start=textView.offsetTop;
-  const total=Math.max(1,textView.scrollHeight-window.innerHeight);
-  const pos=Math.max(0,window.scrollY-start);
-  const pct=Math.max(0,Math.min(100,(pos/total)*100));
+/* Reader Complete V1 */
+const RKEY='sf_pastertia_reader_v1';
+const resumeBtn=document.getElementById('resumeBtn'),statusBox=document.getElementById('readerStatus');
+const notePanel=document.getElementById('notePanel'),savedPanel=document.getElementById('savedPanel'),notesPanel=document.getElementById('notesPanel'),dataPanel=document.getElementById('dataPanel');
+const savedList=document.getElementById('savedList'),notesList=document.getElementById('notesList'),noteTitle=document.getElementById('noteTitle'),noteText=document.getElementById('noteText');
+function store(){try{return JSON.parse(localStorage.getItem(RKEY)||'{}')}catch(_){return {}}}
+function saveStore(s){try{localStorage.setItem(RKEY,JSON.stringify(s));return true}catch(_){return false}}
+function toast(m){statusBox.textContent=m;statusBox.classList.add('show');clearTimeout(window.__toast);window.__toast=setTimeout(()=>statusBox.classList.remove('show'),1800)}
+function escR(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function textMode(){mode('text');side.classList.remove('open')}
+function currentTarget(){if(textView.style.display==='none')return null;const els=[...textView.querySelectorAll('[data-search][id],.source-title-pair[id],.solo-heading[id]')];if(!els.length)return null;const y=scrollY+Math.min(180,innerHeight*.25);let b=els[0];for(const e of els){if(e.getBoundingClientRect().top+scrollY<=y)b=e;else break}return b}
+function currentPage(e){let x=e;while(x&&!x.dataset.page)x=x.previousElementSibling;return x?.dataset?.page||''}
+function currentTitle(e){const h=e?.closest('.source-title-pair')?.querySelector('.source-albanian')||e;return(h?.textContent||'Pastërtia').replace(/\s+/g,' ').trim().slice(0,180)}
+function currentUrl(id){return location.origin+location.pathname+(id?'#'+encodeURIComponent(id):'')}
 
-  if(e.id===resumeLastId && Math.abs(pct-resumeLastPct)<0.15) return;
+let rt=0;
+function saveResume(){if(textView.style.display==='none')return;const s=store(),e=currentTarget(),max=Math.max(1,document.documentElement.scrollHeight-innerHeight);s.resume={scrollY:scrollY,percent:Math.max(0,Math.min(100,scrollY/max*100)),id:e?.id||'',page:currentPage(e),savedAt:Date.now()};saveStore(s);refreshResume()}
+window.addEventListener('scroll',()=>{clearTimeout(rt);rt=setTimeout(saveResume,250)},{passive:true});window.addEventListener('pagehide',saveResume);window.addEventListener('beforeunload',saveResume);
+function refreshResume(){const r=store().resume,ok=r&&(Number.isFinite(Number(r.scrollY))||r.id);resumeBtn.style.display=ok?'inline-block':'none';resumeBtn.textContent=ok?'Vazhdo leximin · '+Math.round(Number(r.percent)||0)+'%':'Vazhdo leximin'}
+resumeBtn.onclick=()=>{const r=store().resume;if(!r)return;textMode();setTimeout(()=>{window.scrollTo({top:Number(r.scrollY)||0,behavior:'smooth'});toast('U kthyet te vendi i fundit i leximit.')},100)}
 
-  if(resumeWrite({id:e.id,percent:pct,scrollY:window.scrollY,savedAt:Date.now()})){
-    resumeLastId=e.id;
-    resumeLastPct=pct;
-    resumeRefresh();
-  }
-}
-function resumeQueue(){
-  clearTimeout(resumeTimer);
-  resumeTimer=setTimeout(resumeSave,180);
-}
-window.addEventListener('scroll',resumeQueue,{passive:true});
-window.addEventListener('pagehide',resumeSave);
-window.addEventListener('beforeunload',resumeSave);
-document.addEventListener('visibilitychange',()=>{
-  if(document.visibilityState==='hidden')resumeSave();
-});
-textBtn.addEventListener('click',()=>setTimeout(resumeSave,250));
+textView.addEventListener('click',e=>{const t=e.target.closest('[data-search][id],.source-title-pair[id],.solo-heading[id]');if(t)window.__readerTarget=t});
 
-resumeBtn.onclick=()=>{
-  const r=resumeRead();
-  if(!resumeValid(r)) return;
-  mode('text');
-  side.classList.remove('open');
-  setTimeout(()=>{
-    const e=document.getElementById(r.id);
-    if(e){
-      e.scrollIntoView({behavior:'smooth',block:'start'});
-      setTimeout(()=>window.scrollBy(0,-110),350);
-    }else if(Number.isFinite(r.scrollY)){
-      window.scrollTo({top:r.scrollY,behavior:'smooth'});
-    }
-    if(typeof gtag==='function')gtag('event','continue_reading',{book:'pastertia',percent:Math.round(Number(r.percent)||0)});
-  },80);
-};
-resumeRefresh();
+function getBookmarks(){return store().bookmarks||[]}function setBookmarks(v){const s=store();s.bookmarks=v;saveStore(s)}
+function renderBookmarks(){const a=getBookmarks();savedList.innerHTML='';if(!a.length){savedList.innerHTML='<div class="reader-item">Nuk ke ruajtur ende asnjë pjesë.</div>';return}a.forEach((b,i)=>{const d=document.createElement('div');d.className='reader-item';d.innerHTML='<a href="#'+escR(b.id)+'">'+escR(b.title)+'</a><small>'+(b.page?'Faqja '+escR(b.page):'')+'</small><div class="reader-item-actions"><button>Hap</button><button>Fshi</button></div>';d.querySelectorAll('button')[0].onclick=()=>goSaved(b);d.querySelectorAll('button')[1].onclick=()=>{const x=getBookmarks();x.splice(i,1);setBookmarks(x);renderBookmarks();toast('Bookmark-u u fshi.')};savedList.appendChild(d)})}
+function goSaved(b){textMode();closePanels();setTimeout(()=>{const e=document.getElementById(b.id);if(e)e.scrollIntoView({behavior:'smooth',block:'start'});else window.scrollTo({top:Number(b.scrollY)||0,behavior:'smooth'})},80)}
+document.getElementById('bookmarkBtn').onclick=()=>{textMode();const e=window.__readerTarget||currentTarget();if(!e)return;const a=getBookmarks();if(a.some(x=>x.id===e.id)){toast('Kjo pjesë është tashmë e ruajtur.');return}a.push({id:e.id,title:currentTitle(e),page:currentPage(e),scrollY:scrollY,createdAt:Date.now()});setBookmarks(a);renderBookmarks();toast('Pjesa u ruajt.')};
+
+function getNotes(){return store().notes||[]}function setNotes(v){const s=store();s.notes=v;saveStore(s)}
+function renderNotes(){const a=getNotes();notesList.innerHTML='';if(!a.length){notesList.innerHTML='<div class="reader-item">Nuk ke ende shënime.</div>';return}a.forEach((n,i)=>{const d=document.createElement('div');d.className='reader-item';d.innerHTML='<a href="#'+escR(n.id)+'">'+escR(n.title||n.text.slice(0,80)||'Shënim')+'</a><small>'+escR(n.text.slice(0,180))+(n.page?' · Faqja '+escR(n.page):'')+'</small><div class="reader-item-actions"><button>Hap</button><button>Fshi</button></div>';d.querySelectorAll('button')[0].onclick=()=>goSaved(n);d.querySelectorAll('button')[1].onclick=()=>{const x=getNotes();x.splice(i,1);setNotes(x);renderNotes();toast('Shënimi u fshi.')};notesList.appendChild(d)})}
+document.getElementById('noteBtn').onclick=()=>{textMode();const e=window.__readerTarget||currentTarget();if(!e)return;window.__noteTarget={id:e.id,page:currentPage(e)};noteTitle.value='';noteText.value='';closePanels();notePanel.classList.add('show');noteText.focus()}
+document.getElementById('saveNoteBtn').onclick=()=>{const t=noteText.value.trim();if(!t){toast('Shkruaj shënimin.');return}const a=getNotes();a.push({id:window.__noteTarget?.id||'',page:window.__noteTarget?.page||'',title:noteTitle.value.trim(),text:t,createdAt:Date.now(),scrollY:scrollY});setNotes(a);notePanel.classList.remove('show');renderNotes();toast('Shënimi u ruajt.')}
+document.getElementById('cancelNoteBtn').onclick=()=>notePanel.classList.remove('show');
+
+document.getElementById('citeBtn').onclick=async()=>{textMode();const e=window.__readerTarget||currentTarget();if(!e)return;const txt=(e.textContent||'').replace(/\s+/g,' ').trim(),p=currentPage(e),ref=`Seria e Fikhut – Zad el-Mustakni‘, Pastërtia, Vëllimi I${p?' – f. '+p:''}\n${txt}\n${currentUrl(e.id)}`;try{await navigator.clipboard.writeText(ref);toast('Pjesa dhe referenca u kopjuan.')}catch(_){window.prompt('Kopjo këtë citim:',ref)}};
+
+document.getElementById('printBtn').onclick=()=>{textMode();const e=window.__readerTarget||currentTarget();if(!e)return;const w=window.open('','_blank','width=900,height=700');if(!w){toast('Lejo pop-up për printim.');return}w.document.write('<!doctype html><html lang="sq"><head><meta charset="utf-8"><title>Pastërtia – pjesë për printim</title><style>body{font-family:Arial,sans-serif;line-height:1.6;padding:35px}p{font-size:16px}</style></head><body><h2>Seria e Fikhut – Pastërtia</h2>'+e.outerHTML+'</body></html>');w.document.close();setTimeout(()=>w.print(),300)};
+
+function closePanels(){[savedPanel,notesPanel,dataPanel].forEach(x=>x.classList.remove('show'))}
+document.getElementById('savedBtn').onclick=()=>{closePanels();renderBookmarks();savedPanel.classList.add('show')}
+document.getElementById('notesBtn').onclick=()=>{closePanels();renderNotes();notesPanel.classList.add('show')}
+document.getElementById('dataBtn').onclick=()=>{closePanels();dataPanel.classList.add('show')}
+document.getElementById('exportBtn').onclick=()=>{const payload={format:'Seria-e-Fikhut-reader-data',version:1,book:'pastertia',exportedAt:new Date().toISOString(),data:store()},blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='seria-e-fikhut-pastertia-kopje-rezerve.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast('Kopja rezervë u ruajt.')}
+document.getElementById('importBtn').onclick=()=>document.getElementById('importFile').click()
+document.getElementById('importFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const p=JSON.parse(await f.text());if(p.book!=='pastertia'||!p.data)throw Error('Skedar i pavlefshëm');saveStore(p.data);refreshResume();renderBookmarks();renderNotes();toast('Të dhënat u rikthyen nga kopja rezervë.')}catch(err){toast('Rikthimi dështoi: '+err.message)}e.target.value=''};
+
+const chapters=[...document.querySelectorAll('.side-toc.level-1')];
+function goChapter(d){if(!chapters.length)return;let i=chapters.reduce((b,a,n)=>{const el=document.querySelector(a.getAttribute('href'));return el&&el.offsetTop<=scrollY+200?n:b},0);const t=chapters[Math.max(0,Math.min(chapters.length-1,i+d))];if(t){textMode();setTimeout(()=>document.querySelector(t.getAttribute('href'))?.scrollIntoView({behavior:'smooth',block:'start'}),80)}}
+document.getElementById('prevChapter').onclick=()=>goChapter(-1);document.getElementById('nextChapter').onclick=()=>goChapter(1);
+document.querySelectorAll('#textView [data-search][id]').forEach(e=>e.style.scrollMarginTop='145px');
+renderBookmarks();renderNotes();refreshResume();
 
 const p=document.getElementById('progress');window.addEventListener('scroll',()=>{if(textView.style.display==='none')return;let h=document.documentElement.scrollHeight-innerHeight;p.style.width=(h?Math.min(100,scrollY/h*100):0)+'%'},{passive:true});
 const orig=document.getElementById('origPage');let heads=[...document.querySelectorAll('[data-page]')].filter(x=>x.dataset.page);let obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&e.target.dataset.page)orig.textContent='Faqja origjinale: '+e.target.dataset.page}),{rootMargin:'-20% 0px -70% 0px'});heads.forEach(h=>obs.observe(h));if(typeof gtag==='function')gtag('event','book_open',{book:'pastertia',format:'online_v2'});
+
+/* Startup: Lexo online është pamja kryesore për çdo vizitor. */
+try{
+  mode('text');
+  document.body.classList.add('reader-online');
+  window.scrollTo(0,0);
+}catch(e){
+  console.error('Reader startup error:',e);
+}
 </script></body></html>
