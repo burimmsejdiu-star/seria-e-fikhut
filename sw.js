@@ -1,4 +1,4 @@
-const CACHE='sf-access-2026-10-11-v1';
+const CACHE='sf-access-2026-10-11-v2';
 const BASE=new URL('./',self.location.href);
 const CORE=['index.html','pastertia.html','install.css','install.js','manifest.webmanifest','icons/icon-192.png','icons/icon-512.png'].map(p=>new URL(p,BASE).href);
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));

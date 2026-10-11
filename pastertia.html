@@ -54,7 +54,9 @@ body.reader-online .reader-tools{display:flex!important}.reader-tools button{fon
 :root{--reader-top:68px}.top{gap:8px}#closeSearch{float:right;margin-bottom:10px}.side h3{clear:both}.side,.running-header{top:var(--reader-top)}.side{height:calc(100dvh - var(--reader-top))}.progress{top:calc(var(--reader-top) - 1px)}.reader-tools{top:var(--reader-top);z-index:50}.book-p{scroll-margin-top:190px}
 @media(min-width:921px){#closeSearch{display:none}}
 @media(max-width:920px){:root{--reader-top:116px}.top{height:116px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:8px;gap:5px;align-content:center}.top .brand{grid-column:1/-1;text-align:center;font-size:19px}.top .grow,.top .crumb{display:none}.top button{font-size:11px;padding:8px 4px;min-width:0;min-height:32px}.top #resumeBtn{grid-column:1/-1}.side{top:var(--reader-top)}.running-header{position:static}.reader-tools{position:static}.source-title-pair,.solo-heading{scroll-margin-top:140px}}
-</style><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#050505"><link rel="apple-touch-icon" href="icons/icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="stylesheet" href="install.css"><script src="install.js" defer></script></head><body>
+
+.sf-search-target{background:#fff19a!important;color:#111!important;outline:2px solid #d2a814;outline-offset:5px;border-radius:3px;box-shadow:0 0 0 6px #fff19a}
+</style><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#050505"><link rel="apple-touch-icon" href="icons/icon-192.png?v=2"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="stylesheet" href="install.css"><script src="install.js" defer></script></head><body>
 <div class="top"><button id="tocBtn" aria-controls="side" aria-expanded="false">☰ Përmbajtja</button><a class="brand" href="index.html">Seria e Fikhut</a><span class="crumb">Pastërtia · Vëllimi I</span><span class="grow"></span><button id="searchBtn" aria-controls="side" aria-expanded="false">⌕ Kërko</button><button id="resumeBtn" title="Vazhdo nga vendi i fundit">Vazhdo leximin</button><button id="pdfBtn">Shiko PDF</button><button id="textBtn" class="active">Lexo online</button></div><div class="progress" id="progress"></div><div class="reader-status" id="readerStatus"></div>
 <div class="layout"><aside class="side" id="side"><button id="closeSearch" type="button">Mbyll ×</button><h3>Kërko në tekst</h3><input class="search" id="q" aria-label="Kërko në tekstin e librit" type="search" placeholder="Fjalë ose frazë…"><div id="results" aria-live="polite"></div><h3>Përmbajtja e plotë</h3><a class="side-toc level-1" href="#_Toc240188633" data-nav><span>Libri mbi dispozitat e pastërtisë</span><b>13</b></a>
 <a class="side-toc level-2" href="#_Toc240188634" data-nav><span>Pastërtia është: largimi i papastërtisë rituale; largimi i asaj që merr gjykimin e saj; dhe largimi i papastërtisë fizike.</span><b>13</b></a>
@@ -7373,6 +7375,7 @@ document.querySelectorAll('[data-nav]').forEach(a=>a.onclick=()=>{mode('text');c
 const q=document.getElementById('q'),results=document.getElementById('results'),searchables=[...document.querySelectorAll('[data-search],.source-title-pair,.solo-heading')];
 q.setAttribute('title','Shkruaj disa fjalë, ose vendose frazën në thonjëza për kërkim të saktë.');
 q.oninput=()=>{
+  document.querySelectorAll('.sf-search-target').forEach(x=>x.classList.remove('sf-search-target'));
   let raw=q.value.trim(),quoted=raw.length>1&&raw.startsWith('"')&&raw.endsWith('"'),clean=quoted?raw.slice(1,-1):raw,n=norm(clean);
   results.innerHTML='';
   if(n.length<2){results.classList.remove('show');return}
@@ -7392,7 +7395,7 @@ q.oninput=()=>{
     hits.slice(0,60).forEach(e=>{
       let a=document.createElement('a');a.className='res';a.href='#'+e.id;
       a.innerHTML=makeSnippet(e.textContent,terms)+(pageFor(e)?'<span class="res-page">'+esc(pageFor(e))+'</span>':'');
-      a.onclick=()=>{mode('text');side.classList.remove('open');setTimeout(()=>e.scrollIntoView({behavior:'smooth',block:'center'}),30)};
+      a.onclick=()=>{mode('text');closeSide();document.querySelectorAll('.sf-search-target').forEach(x=>x.classList.remove('sf-search-target'));e.classList.add('sf-search-target');setTimeout(()=>e.scrollIntoView({behavior:'smooth',block:'center'}),30)};
       results.appendChild(a)
     });
     if(hits.length>60){
