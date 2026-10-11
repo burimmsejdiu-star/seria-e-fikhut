@@ -50,9 +50,13 @@ body.reader-online .reader-tools{display:flex!important}.reader-tools button{fon
 @media(max-width:600px){.reader-tools{top:52px;padding:6px}.reader-tools button{flex:1 1 auto}.reader-nav{flex-direction:column}}
 #results{display:none;background:#12100c;border:1px solid var(--line);border-radius:7px;max-height:42vh;overflow:auto;margin:8px 0}#results.show{display:block}.search-meta{padding:8px 9px;border-bottom:1px solid #b88a2025;color:#9f9276;font:10px/1.35 Arial,sans-serif}.res{display:block;padding:9px;border-bottom:1px solid #b88a2025;color:#d7c9aa;text-decoration:none;font:11px/1.45 Arial,sans-serif}.res:hover{color:#f2d36f;background:#18150f}.res mark{background:#d4aa3a;color:#0a0907;border-radius:2px;padding:0 1px}.res-page{display:block;margin-top:4px;color:#8f805f;font:10px Arial,sans-serif}.progress{position:fixed;top:67px;left:0;height:3px;background:var(--gold2);z-index:100;width:0}
 @media(max-width:920px){.layout{grid-template-columns:1fr}.side{position:fixed;left:0;top:68px;width:min(88vw,360px);z-index:80;transform:translateX(-105%);transition:.2s;box-shadow:20px 0 40px #000d}.side.open{transform:none}.crumb{display:none}.pdf-view{height:calc(100vh - 118px)}}@media(min-width:921px){#tocBtn{display:none}}@media(max-width:600px){.main{padding:10px 6px 45px}.book{padding:30px 20px}.front-page{min-height:auto}.book-p{font-size:16.5px}.source-arabic{font-size:21px}.source-albanian{font-size:18px}.running-header{top:68px;padding:7px 10px}.hdr-line{font-size:10px}.hdr-line.ar{font-size:14px}}
-</style></head><body>
-<div class="top"><button id="tocBtn">☰ Përmbajtja</button><a class="brand" href="index.html">Seria e Fikhut</a><span class="crumb">Pastërtia · Vëllimi I</span><span class="grow"></span><button id="resumeBtn" title="Vazhdo nga vendi i fundit">Vazhdo leximin</button><button id="pdfBtn">Shiko PDF</button><button id="textBtn" class="active">Lexo online</button></div><div class="progress" id="progress"></div><div class="reader-status" id="readerStatus"></div>
-<div class="layout"><aside class="side" id="side"><h3>Kërko në tekst</h3><input class="search" id="q" placeholder="Fjalë ose frazë…"><div id="results"></div><h3>Përmbajtja e plotë</h3><a class="side-toc level-1" href="#_Toc240188633" data-nav><span>Libri mbi dispozitat e pastërtisë</span><b>13</b></a>
+
+:root{--reader-top:68px}.top{gap:8px}#closeSearch{float:right;margin-bottom:10px}.side h3{clear:both}.side,.running-header{top:var(--reader-top)}.side{height:calc(100dvh - var(--reader-top))}.progress{top:calc(var(--reader-top) - 1px)}.reader-tools{top:var(--reader-top);z-index:50}.book-p{scroll-margin-top:190px}
+@media(min-width:921px){#closeSearch{display:none}}
+@media(max-width:920px){:root{--reader-top:116px}.top{height:116px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:8px;gap:5px;align-content:center}.top .brand{grid-column:1/-1;text-align:center;font-size:19px}.top .grow,.top .crumb{display:none}.top button{font-size:11px;padding:8px 4px;min-width:0;min-height:32px}.top #resumeBtn{grid-column:1/-1}.side{top:var(--reader-top)}.running-header{position:static}.reader-tools{position:static}.source-title-pair,.solo-heading{scroll-margin-top:140px}}
+</style><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#050505"><link rel="apple-touch-icon" href="icons/icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="stylesheet" href="install.css"><script src="install.js" defer></script></head><body>
+<div class="top"><button id="tocBtn" aria-controls="side" aria-expanded="false">☰ Përmbajtja</button><a class="brand" href="index.html">Seria e Fikhut</a><span class="crumb">Pastërtia · Vëllimi I</span><span class="grow"></span><button id="searchBtn" aria-controls="side" aria-expanded="false">⌕ Kërko</button><button id="resumeBtn" title="Vazhdo nga vendi i fundit">Vazhdo leximin</button><button id="pdfBtn">Shiko PDF</button><button id="textBtn" class="active">Lexo online</button></div><div class="progress" id="progress"></div><div class="reader-status" id="readerStatus"></div>
+<div class="layout"><aside class="side" id="side"><button id="closeSearch" type="button">Mbyll ×</button><h3>Kërko në tekst</h3><input class="search" id="q" aria-label="Kërko në tekstin e librit" type="search" placeholder="Fjalë ose frazë…"><div id="results" aria-live="polite"></div><h3>Përmbajtja e plotë</h3><a class="side-toc level-1" href="#_Toc240188633" data-nav><span>Libri mbi dispozitat e pastërtisë</span><b>13</b></a>
 <a class="side-toc level-2" href="#_Toc240188634" data-nav><span>Pastërtia është: largimi i papastërtisë rituale; largimi i asaj që merr gjykimin e saj; dhe largimi i papastërtisë fizike.</span><b>13</b></a>
 <a class="side-toc level-2" href="#_Toc240188635" data-nav><span>Ujërat ndahen në tri lloje:</span><b>16</b></a>
 <a class="side-toc level-2" href="#_Toc240188636" data-nav><span>“Uji i pastër dhe pastrues është ai që asgjë tjetër përveç tij nuk e largon papastërtinë rituale dhe as nuk e pastron papastërtinë e përftuar. Ai është uji që ka mbetur në gjendjen e tij natyrore.”</span><b>16</b></a>
@@ -7344,6 +7348,28 @@ function mode(m){
   }
   try{localStorage.setItem('sf_pastertia_mode',m)}catch(e){}
 }
+
+function norm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f\u0610-\u061a\u064b-\u065f\u0670\u06d6-\u06ed\u0640]/g,'').replace(/\s+/g,' ').trim()}
+function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function pageFor(e){const page=currentPage(e);return page?'Faqja '+page:''}
+function makeSnippet(text,terms){
+ const chars=[...text],normalized=[],positions=[];
+ chars.forEach((c,i)=>{let n=norm(c);if(/\s/.test(c))n=' ';for(const x of n){normalized.push(x);positions.push(i)}});
+ const full=normalized.join(''),matches=[];
+ for(const term of terms){let at=0;while((at=full.indexOf(term,at))!==-1){matches.push([positions[at],positions[at+term.length-1]+1]);at+=term.length}}
+ matches.sort((a,b)=>a[0]-b[0]);const start=Math.max(0,(matches[0]?.[0]||0)-65),end=Math.min(chars.length,start+240);let out=start?'…':'',cursor=start;
+ for(const [a,b] of matches){if(b<=cursor||a>=end)continue;const left=Math.max(a,cursor);out+=esc(chars.slice(cursor,left).join(''))+'<mark>'+esc(chars.slice(left,Math.min(b,end)).join(''))+'</mark>';cursor=Math.min(b,end)}
+ return out+esc(chars.slice(cursor,end).join(''))+(end<chars.length?'…':'')
+}
+pdfBtn.onclick=()=>mode('pdf');textBtn.onclick=()=>mode('text');
+const tocBtn=document.getElementById('tocBtn'),searchBtn=document.getElementById('searchBtn');
+function closeSide(){side.classList.remove('open');tocBtn.setAttribute('aria-expanded','false');searchBtn.setAttribute('aria-expanded','false')}
+tocBtn.onclick=()=>{const open=side.classList.toggle('open');tocBtn.setAttribute('aria-expanded',String(open));searchBtn.setAttribute('aria-expanded',String(open))};
+searchBtn.onclick=()=>{side.classList.add('open');searchBtn.setAttribute('aria-expanded','true');tocBtn.setAttribute('aria-expanded','true');side.scrollTop=0;document.getElementById('q').focus()};
+document.getElementById('closeSearch').onclick=closeSide;
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSide()});
+document.querySelectorAll('[data-nav]').forEach(a=>a.onclick=()=>{mode('text');closeSide()});
+
 const q=document.getElementById('q'),results=document.getElementById('results'),searchables=[...document.querySelectorAll('[data-search],.source-title-pair,.solo-heading')];
 q.setAttribute('title','Shkruaj disa fjalë, ose vendose frazën në thonjëza për kërkim të saktë.');
 q.oninput=()=>{
@@ -7443,11 +7469,12 @@ renderBookmarks();renderNotes();refreshResume();
 const p=document.getElementById('progress');window.addEventListener('scroll',()=>{if(textView.style.display==='none')return;let h=document.documentElement.scrollHeight-innerHeight;p.style.width=(h?Math.min(100,scrollY/h*100):0)+'%'},{passive:true});
 const orig=document.getElementById('origPage');let heads=[...document.querySelectorAll('[data-page]')].filter(x=>x.dataset.page);let obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&e.target.dataset.page)orig.textContent='Faqja origjinale: '+e.target.dataset.page}),{rootMargin:'-20% 0px -70% 0px'});heads.forEach(h=>obs.observe(h));if(typeof gtag==='function')gtag('event','book_open',{book:'pastertia',format:'online_v2'});
 
+if(new URLSearchParams(location.search).has('kerko'))searchBtn.click();
 /* Startup: Lexo online është pamja kryesore për çdo vizitor. */
 try{
   mode('text');
   document.body.classList.add('reader-online');
-  window.scrollTo(0,0);
+  if(location.hash){requestAnimationFrame(()=>document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView())}else window.scrollTo(0,0);
 }catch(e){
   console.error('Reader startup error:',e);
 }
