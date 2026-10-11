@@ -65,6 +65,11 @@ body.reader-online .reader-tools{display:flex!important}.reader-tools button{fon
  .top button{white-space:normal;line-height:1.4;min-height:40px;padding:8px 6px}
  .side{height:calc(100vh - var(--reader-top));height:calc(100dvh - var(--reader-top))}
 }
+
+/* Keep reading actions visible below the measured main toolbar. */
+@media(max-width:920px){
+ .reader-tools{position:sticky;top:var(--reader-top);z-index:60;margin-top:0;background:#070706;max-height:35vh;max-height:35dvh;overflow-y:auto}
+}
 </style><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#050505"><link rel="apple-touch-icon" href="icons/icon-192.png?v=2"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="stylesheet" href="install.css"><script src="install.js" defer></script></head><body>
 <div class="top"><button id="tocBtn" aria-controls="side" aria-expanded="false">☰ Përmbajtja</button><a class="brand" href="index.html">Seria e Fikhut</a><span class="crumb">Pastërtia · Vëllimi I</span><span class="grow"></span><button id="searchBtn" aria-controls="side" aria-expanded="false">⌕ Kërko</button><button id="resumeBtn" title="Vazhdo nga vendi i fundit">Vazhdo leximin</button><button id="pdfBtn">Shiko PDF</button><button id="textBtn" class="active">Lexo online</button></div><div class="progress" id="progress"></div><div class="reader-status" id="readerStatus"></div>
 <div class="layout"><aside class="side" id="side"><button id="closeSearch" type="button">Mbyll ×</button><h3>Kërko në tekst</h3><input class="search" id="q" aria-label="Kërko në tekstin e librit" type="search" placeholder="Fjalë ose frazë…"><div id="results" aria-live="polite"></div><h3>Përmbajtja e plotë</h3><a class="side-toc level-1" href="#_Toc240188633" data-nav><span>Libri mbi dispozitat e pastërtisë</span><b>13</b></a>
