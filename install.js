@@ -1,6 +1,13 @@
 (() => {
  let pending=null,banner,button,help;
  const standalone=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+
+ const readerEntry=/\/(pastertia|namazi)\.html$/.test(location.pathname);
+ if(standalone()&&readerEntry&&!location.hash&&!location.search){
+  let fromLibrary=false;
+  try{const previous=new URL(document.referrer);fromLibrary=previous.origin===location.origin&&/\/(index\.html)?$/.test(previous.pathname)}catch(_){}
+  if(!fromLibrary){location.replace(new URL('./index.html#librat',location.href).href);return}
+ }
  const stored=(key)=>{try{return localStorage.getItem(key)}catch(_){return null}};
  const remember=(key,val)=>{try{localStorage.setItem(key,val)}catch(_){}};
  window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();pending=event;if(button)button.textContent='Vendose si ikonë'});

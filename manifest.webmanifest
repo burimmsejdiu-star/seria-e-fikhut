@@ -4,7 +4,7 @@
   "short_name": "Seria e Fikhut",
   "lang": "sq",
   "description": "Lexo librat e Serisë së Fikhut.",
-  "start_url": "./pastertia.html",
+  "start_url": "./index.html#librat",
   "scope": "./",
   "display": "standalone",
   "background_color": "#050505",
