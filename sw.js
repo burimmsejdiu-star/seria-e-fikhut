@@ -1,6 +1,6 @@
-const CACHE='sf-access-2026-11-02-library-paged-v5';
+const CACHE='sf-access-2026-11-09-zekati-mobile-v7';
 const BASE=new URL('./',self.location.href);
-const CORE=['index.html','pastertia.html','namazi.html','install.css','install.js','manifest.webmanifest','icons/icon-192.png','icons/icon-512.png'].map(p=>new URL(p,BASE).href);
+const CORE=['index.html','pastertia.html','namazi.html','zekati.html','zekati.html','install.css','install.js','manifest.webmanifest','icons/icon-192.png','icons/icon-512.png'].map(p=>new URL(p,BASE).href);
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('sf-access-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{

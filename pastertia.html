@@ -145,7 +145,37 @@ button:focus-visible,a:focus-visible{outline:2px solid #f0c84b;outline-offset:3p
  .page-navigation button{white-space:nowrap;flex:0 0 auto}
  .page-navigation label{font-size:11px;gap:4px}
 }
-</style><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#050505"><link rel="apple-touch-icon" href="icons/icon-192.png?v=2"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="stylesheet" href="install.css"><script src="install.js" defer></script></head><body>
+</style><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#050505"><link rel="apple-touch-icon" href="icons/icon-192.png?v=2"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="stylesheet" href="install.css"><script src="install.js" defer></script><style>
+/* Compact mobile reader, proposal 1. */
+.sf-more,.sf-mobile-menu,.sf-page-dock{display:none}
+@media(max-width:920px){
+ .top{min-height:0!important;padding:6px 10px!important;gap:4px!important;grid-template-columns:minmax(72px,1fr) minmax(120px,1.6fr) 44px 44px!important;transition:transform .18s ease}
+ .top .brand{grid-column:1/-1!important;order:-2!important;font-size:18px!important;line-height:26px!important}
+ .top .library-home{grid-column:1!important;grid-row:2!important;order:0!important}
+ .top #tocBtn{grid-column:2!important;grid-row:2!important;order:0!important}
+ .top #searchBtn{grid-row:2!important;grid-column:3!important;order:0!important;font-size:0!important}
+ .top #searchBtn::after{content:'⌕';font:26px Arial,sans-serif}
+ .top .sf-more{display:block;grid-row:2!important;grid-column:4;order:0;font-size:25px!important}
+ .top button,.top .library-home{min-height:44px!important;font-size:12px;padding:6px!important;white-space:nowrap}
+ body.reader-online #readerTools,#readerTools{display:none!important}
+ .sf-mobile-menu{position:fixed;right:10px;top:calc(var(--reader-top) + 5px);z-index:105;width:min(300px,calc(100vw - 20px));max-height:calc(100dvh - var(--reader-top) - 90px);overflow:auto;padding:8px;background:#0d0c0a;border:1px solid #9c741f;border-radius:10px;box-shadow:0 12px 36px #0009}
+ .sf-mobile-menu:not([hidden]){display:flex;flex-direction:column;gap:3px}
+ .sf-mobile-menu button{width:100%;text-align:left;min-height:44px;border:0;border-bottom:1px solid #9c741f40;border-radius:3px;font-size:14px;padding:10px 12px}
+ .sf-page-dock{position:fixed;bottom:0;left:0;right:0;z-index:100;background:#080706;border-top:1px solid #9c741f;padding:5px 10px calc(5px + env(safe-area-inset-bottom))}
+ body.reader-online .sf-page-dock{display:block}
+ .sf-page-dock .page-navigation{margin:0 auto;padding:0;border:0;display:flex;justify-content:center;flex-wrap:nowrap;gap:7px;max-width:460px}
+ .sf-page-dock .page-navigation button{min-height:44px;min-width:44px;flex:0 0 auto}
+ .sf-page-dock .page-navigation input{width:65px;min-height:42px;font-size:16px}
+ .sf-page-dock #prevPage::after{content:'←';font-size:20px}
+ .sf-page-dock #nextPage::after{content:'→';font-size:20px}
+ .sf-page-dock #goPage{background:#ad8427;color:#090806;font-weight:bold}
+ .reader-footer{position:static}.main{padding-bottom:90px}.reader-status{bottom:80px}
+ .sf-header-away .top{transform:translateY(-100%)}
+ .sf-header-away .progress{visibility:hidden}
+}
+@media print{.sf-more,.sf-mobile-menu,.sf-page-dock{display:none!important}}
+
+</style></head><body>
 <div class="top"><button id="tocBtn" aria-controls="side" aria-expanded="false">☰ Përmbajtja</button><a href="index.html#librat" class="tool library-home" aria-label="Kthehu te librat">← Librat</a><a class="brand" href="index.html#librat" title="Zgjidh librin">Seria e Fikhut</a><span class="crumb">Pastërtia · Vëllimi I</span><span class="grow"></span><button id="searchBtn" aria-controls="side" aria-expanded="false">⌕ Kërko</button><button id="resumeBtn" title="Vazhdo nga vendi i fundit">Vazhdo leximin</button><button id="pdfBtn">Shiko PDF</button><button id="textBtn" class="active">Lexo online</button></div><div class="progress" id="progress"></div><div class="reader-status" id="readerStatus"></div>
 <div class="layout"><aside class="side" id="side"><button id="closeSearch" type="button">Mbyll ×</button><h3>Kërko në tekst</h3><input class="search" id="q" aria-label="Kërko në tekstin e librit" type="search" placeholder="Fjalë ose frazë…"><div id="results" aria-live="polite"></div><h3>Përmbajtja e plotë</h3><a class="side-toc level-1" href="#_Toc240188633" data-nav><span>Libri mbi dispozitat e pastërtisë</span><b>1</b></a>
 <a class="side-toc level-2" href="#_Toc240188634" data-nav><span>Pastërtia është: largimi i papastërtisë rituale; largimi i asaj që merr gjykimin e saj; dhe largimi i papastërtisë fizike.</span><b>1</b></a>
@@ -852,7 +882,7 @@ $('printBtn').onclick=()=>{
   const e=target();if(!e)return;const w=window.open('','_blank','width=900,height=700');if(!w){toast('Lejo dritaren e printimit në shfletues.');return}w.opener=null;
   const parts=paragraphParts.get(e.dataset.paragraphId||e.id)||[e],printText=parts.map(p=>p.outerHTML).join('');
   const footnotes=parts.flatMap(p=>[...p.querySelectorAll('.footnote-ref')]).map(a=>document.getElementById(a.hash.slice(1))?.outerHTML||'').join('');
-  w.document.write('<!doctype html><html lang="sq"><head><meta charset="utf-8"><title>Pastërtia – pjesë për printim</title><style>body{font:17px/1.7 Arial,sans-serif;padding:32px;color:#111}.source-text{white-space:pre-wrap}a{color:inherit}.reference{font-size:12px;overflow-wrap:anywhere}.list-p{padding-inline-start:1.5em;position:relative}.list-marker{position:absolute;inset-inline-start:0}.book-footnote{font-size:13px;border-top:1px solid #ccc}.footnote-ref{vertical-align:super;font-size:.7em}</style></head><body><h2>Seria e Fikhut – Pastërtia</h2>'+printText+footnotes+'<p class="reference">'+esc(reference(e))+'<br>'+esc(directUrl(e.id))+'</p></body></html>');w.document.close();setTimeout(()=>{if(!w.closed)w.print()},400);
+  w.document.write('<!doctype html><html lang="sq"><head><meta charset="utf-8"><title>Pastërtia – pjesë për printim</title><style>body{font:17px/1.7 Arial,sans-serif;padding:32px;color:#111}.source-text{white-space:pre-wrap}a{color:inherit}.reference{font-size:12px;overflow-wrap:anywhere}.list-p{padding-inline-start:1.5em;position:relative}.list-marker{position:absolute;inset-inline-start:0}.book-footnote{font-size:13px;border-top:1px solid #ccc}.footnote-ref{vertical-align:super;font-size:.7em}</style></head><body><h2>Seria e Fikhut – Pastërtia</h2>'+printText+footnotes+'<p class="reference">'+esc(reference(e))+'<br>'+esc(directUrl(e.id))+'</p><\/body></html>');w.document.close();setTimeout(()=>{if(!w.closed)w.print()},400);
 };
 $('exportBtn').onclick=()=>{saveResume();const data={format:'Seria-e-Fikhut-reader-data',version:1,book:'pastertia',exportedAt:new Date().toISOString(),data:state};const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='seria-e-fikhut-pastertia-kopje-rezerve.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('Kopja rezervë u përgatit.')};
 $('importBtn').onclick=()=>$('importFile').click();
@@ -880,4 +910,27 @@ if(location.hash){const id=decodeURIComponent(location.hash.slice(1));requestAni
 if(new URLSearchParams(location.search).has('kerko'))$('searchBtn').click();
 if(typeof gtag==='function')gtag('event','book_open',{book:'pastertia',format:'online_v1'});
 })();
+</script><script>
+(() => {
+ 'use strict';
+ const top=document.querySelector('.top'),tools=document.getElementById('readerTools');
+ const toggle=document.createElement('button');toggle.className='sf-more';toggle.type='button';toggle.textContent='⋮';toggle.setAttribute('aria-label','Më shumë');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-controls','sfMobileMenu');top.append(toggle);
+ const menu=document.createElement('div');menu.id='sfMobileMenu';menu.className='sf-mobile-menu';menu.hidden=true;menu.setAttribute('aria-label','Mjetet e leximit');document.body.append(menu);
+ const dock=document.createElement('div');dock.className='sf-page-dock';document.body.append(dock);
+ const ids=['resumeBtn','bookmarkBtn','noteBtn','citeBtn','printBtn','savedBtn','notesBtn','dataBtn','pdfBtn','textBtn','prevChapter','nextChapter','helpBtn'];
+ const moves=ids.map(id=>{const el=document.getElementById(id),slot=document.createComment('mobile-slot-'+id);el.before(slot);return {el,slot}});
+ const nav=document.querySelector('.page-navigation'),navSlot=document.createComment('page-navigation-slot');nav.before(navSlot);
+ const mq=matchMedia('(max-width:920px)');
+ function close(focus=false){menu.hidden=true;toggle.setAttribute('aria-expanded','false');if(focus)toggle.focus()}
+ function layout(){close();document.body.classList.remove('sf-header-away');for(const {el,slot} of moves){if(mq.matches)menu.append(el);else slot.after(el)}if(mq.matches)dock.append(nav);else navSlot.after(nav);window.dispatchEvent(new Event('resize'))}
+ toggle.onclick=()=>{const opening=menu.hidden;menu.hidden=!opening;toggle.setAttribute('aria-expanded',String(opening));if(opening)menu.querySelector('button:not(:disabled)')?.focus()};
+ menu.addEventListener('click',e=>{if(e.target.closest('button')){close();queueMicrotask(()=>{if(menu.contains(document.activeElement))toggle.focus()})}});
+ document.addEventListener('click',e=>{if(!menu.hidden&&!menu.contains(e.target)&&!toggle.contains(e.target))close()});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){close(true);e.preventDefault()}});
+ document.addEventListener('focusin',e=>{if(top.contains(e.target))document.body.classList.remove('sf-header-away');if(!menu.hidden&&!menu.contains(e.target)&&e.target!==toggle)close()});
+ let last=scrollY;
+ window.addEventListener('scroll',()=>{const now=scrollY,delta=now-last;if(Math.abs(delta)<8)return;last=now;const blocked=!menu.hidden||document.querySelector('.side.open,.reader-panel.show,.reader-help-overlay.show')||top.contains(document.activeElement);document.body.classList.toggle('sf-header-away',mq.matches&&now>180&&delta>0&&!blocked)},{passive:true});
+ mq.addEventListener('change',layout);layout();
+})();
+
 </script></body></html>
