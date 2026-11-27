@@ -66,6 +66,13 @@ footer{border-top:1px solid var(--line);padding:24px 0;color:#968b72;font:12px A
 }
 .book-search{display:flex;flex-wrap:wrap;gap:6px;padding-top:16px}
 #librat{scroll-margin-top:72px}.cover>a{display:flex;width:100%;height:100%;align-items:center;justify-content:center}.cover>a:focus-visible{outline:3px solid #f0c84b;outline-offset:-4px}
+#pyet-librat{max-width:760px;margin:0 auto 32px;padding:20px;border:1px solid var(--line);border-radius:10px;background:var(--panel);font:16px/1.5 Arial,sans-serif}
+#pyet-librat label{display:block;font:700 22px Georgia,serif;color:var(--gold2);margin-bottom:12px}
+.question-row{display:flex;gap:8px}.question-row input{min-width:0;flex:1;background:#070706;color:var(--text);border:1px solid #887344;border-radius:6px;padding:12px;font:inherit}.question-row button{border:0;border-radius:6px;background:var(--gold2);color:#191407;padding:10px 16px;font:700 15px Arial,sans-serif;cursor:pointer}
+#pyet-librat :focus-visible{outline:2px solid var(--gold2);outline-offset:3px}#question-status{color:var(--muted);margin:12px 0 0;font-size:14px}#question-status:empty,#question-results:empty{display:none}
+#question-results{list-style:none;margin:10px 0 0;padding:0}#question-results li{border-top:1px solid var(--line)}#question-results a{display:block;padding:12px 0;color:var(--text);text-decoration:none}#question-results a:hover strong{text-decoration:underline}#question-results strong{display:block;color:var(--gold2)}#question-results span{display:block;font-size:15px}
+#question-results button{background:transparent;border:0;color:var(--gold2);font:inherit;padding:12px 0;text-align:left;cursor:pointer}#question-results button:hover{text-decoration:underline}
+@media(max-width:520px){#pyet-librat{padding:15px}.question-row{flex-wrap:wrap}.question-row input{flex-basis:100%}.question-row button{width:100%;min-height:42px}}
 </style>
 <link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#050505"><link rel="apple-touch-icon" href="icons/icon-192.png?v=2"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="stylesheet" href="install.css"><script src="install.js" defer></script></head>
 <body>
@@ -81,6 +88,12 @@ footer{border-top:1px solid var(--line);padding:24px 0;color:#968b72;font:12px A
 <main id="krye">
 <section class="hero"><div class="wrap heroGrid"><div><div class="eyebrow">Bibliotekë elektronike falas</div><h1>Seria e Fikhut</h1><p>Faqja zyrtare për versionet elektronike të serisë. Librat do të ofrohen falas për lexim dhe shkarkim, ndërsa versionet elektronike mund të përditësohen kur bëhen korrigjime.</p><div class="pill">Lexo online • PDF • EPUB • Versione të përditësuara</div></div><div class="heroSeries"><img src="assets/seria.png" alt="Seria e Fikhut"></div></div></section>
 <section id="librat"><div class="wrap"><div class="sectionTitle"><h2>Vëllimet</h2><p>Gjashtë vëllimet e para të Serisë së Fikhut. Biblioteka është përgatitur që të zgjerohet më vonë me pjesët e tjera të fikhut, përfshirë tregtinë dhe vëllimet pasuese.</p></div>
+<form id="pyet-librat" role="search" aria-label="Kërkim me pyetje në të gjithë librat" hidden>
+  <label for="question-input">Pyet për një temë nga librat</label>
+  <div class="question-row"><input id="question-input" type="search" placeholder="P.sh. Çka ma prish abdesin?" maxlength="450" required><button type="submit">Gjej pjesën</button></div>
+  <p id="question-status" role="status" aria-live="polite"></p>
+  <ul id="question-results"></ul>
+</form>
 <div class="grid">
 <article class="card"><div class="cover"><a href="pastertia.html?lexo=1" aria-label="Lexo Pastërtia"><img src="assets/pastertia.png" alt="Pastërtia"></a></div><div class="cardbody"><div class="vol">Vëllimi I</div><h3>Pastërtia</h3><div class="status">I disponueshëm për lexim online dhe shkarkim.</div><div class="actions"><a class="btn" href="pastertia.html?lexo=1">Lexo online</a><a class="btn" href="pastertia.pdf" target="_blank">PDF</a><a class="btn" href="pastertia.epub" download>EPUB</a></div></div></article>
 <article class="card"><div class="cover"><a href="namazi.html?lexo=1" aria-label="Lexo Namazi"><img src="assets/namazi.png" alt="Namazi"></a></div><div class="cardbody"><div class="vol">Vëllimi II</div><h3>Namazi</h3><div class="status">I disponueshëm për lexim online dhe shkarkim.</div><div class="actions"><a class="btn" href="namazi.html?lexo=1">Lexo online</a><a class="btn" href="namazi.pdf" target="_blank">PDF</a><a class="btn" href="namazi.epub" download>EPUB</a></div></div></article>
@@ -100,4 +113,4 @@ if(!location.hash||location.hash==='#librat'){window.addEventListener('load',()=
  const nav=performance.getEntriesByType('navigation')[0];
  if(!nav||nav.type!=='back_forward')document.getElementById('librat').scrollIntoView({behavior:'instant',block:'start'});
 },{once:true})}
-</script></body></html>
+</script><script defer src="pyet-librat.js"></script></body></html>
