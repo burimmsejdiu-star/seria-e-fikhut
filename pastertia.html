@@ -496,11 +496,18 @@ function showPanel(panel){const wasOpen=panel.classList.contains('show');closePa
 panels.forEach(panel=>{const b=document.createElement('button');b.className='panel-close';b.textContent='Mbyll ×';b.onclick=()=>panel.classList.remove('show');panel.prepend(b)});
 function mode(text){
   if(!text&&$('pdfBtn').disabled)return;
-  if(!text){saveResume();const e=target();$('pdfFrame').src='pastertia.pdf#page='+(currentSheet()?.dataset.physicalPage||e?.dataset.pdfPage||'1')+'&view=FitH'}
+  const returningToText=text&&!online;
+  if(!text){
+    if(!online)return;
+    selected=target();
+    saveResume();
+    $('pdfFrame').src='pastertia.pdf#page='+currentSheet().dataset.physicalPage+'&view=FitH';
+  }
   online=text;document.body.classList.toggle('reader-online',text);
   textView.style.display=text?'block':'none';pdfView.style.display=text?'none':'block';$('note').style.display=text?'none':'block';
   $('textBtn').classList.toggle('active',text);$('pdfBtn').classList.toggle('active',!text);closePanels();
   measure();
+  if(returningToText&&selected)selected.scrollIntoView({behavior:'instant',block:'start'});
 }
 function measure(){
   const top=Math.ceil(document.querySelector('.top').getBoundingClientRect().height);
@@ -512,17 +519,21 @@ new ResizeObserver(measure).observe(toolsBar);
 window.addEventListener('resize',measure);document.fonts?.ready.then(measure);
 const readingOffset=()=>document.querySelector('.top').getBoundingClientRect().height+toolsBar.getBoundingClientRect().height+20;
 function currentSheet(){
+  const chosen=selected?.closest('.paper-page');
+  if(chosen)return chosen;
+  if(scrollY>0&&scrollY+innerHeight>=document.documentElement.scrollHeight-1)return sheets[sheets.length-1];
   let lo=0,hi=sheets.length-1,best=sheets[0],y=readingOffset()+2;
   while(lo<=hi){const m=(lo+hi)>>1,e=sheets[m];if(e.getBoundingClientRect().top<=y){best=e;lo=m+1}else hi=m-1}
   return best;
 }
 function currentTarget(){
+  if(selected)return selected;
   let lo=0,hi=paragraphs.length-1,best=paragraphs[0],y=readingOffset()+2;
   while(lo<=hi){const m=(lo+hi)>>1,e=paragraphs[m];if(e.getBoundingClientRect().top<=y){best=e;lo=m+1}else hi=m-1}
-  const sheet=currentSheet();if(sheet&&!sheet.contains(best))best=sheet.querySelector('[data-search]')||best;
+  const sheet=currentSheet();if(sheet&&!sheet.contains(best))best=sheet.querySelector('[data-search][id]')||sheet;
   return best;
 }
-function target(){return selected||currentTarget()}
+function target(){return currentTarget()}
 function partText(e){return(e.querySelector('.source-text')||e).textContent}
 function sourceText(e){return(paragraphParts.get(e.dataset.paragraphId||e.id)||[e]).map(partText).join('')}
 function title(e){return sourceText(e).replace(/\s+/g,' ').trim().slice(0,180)}
@@ -535,6 +546,7 @@ function pageLabel(e,short=false){
   return(numbered?(start===end?'Faqja: ':'Faqet: '):(start===end?'Faqja e PDF-së: ':'Faqet e PDF-së: '))+range;
 }
 function paragraphPageLabel(e){
+  if(e.matches('.paper-page'))return pageLabel({dataset:{page:e.dataset.readingPage,pdfPage:e.dataset.physicalPage}},true);
   const start=e.dataset.originalPdfStart,end=e.dataset.originalPdfEnd;
   if(!start)return pageLabel(e,true);
   const data={pdfPage:start,pdfPageEnd:end};if(Number(start)>12){data.page=String(Number(start)-12);data.pageEnd=String(Number(end)-12)}
@@ -552,7 +564,10 @@ function saveResume(){
 }
 function goTo(id,highlight=false,record=true){
   const e=resolveTarget(id);if(!e)return;
-  mode(true);closeSide();closePanels();selected=e.closest('[data-search]')||null;if(record)dirty=true;
+  mode(true);closeSide();closePanels();
+  const sheet=e.closest('.paper-page');
+  selected=e.closest('[data-search][id]')||sheet?.querySelector('[data-search][id]')||sheet;
+  if(record)dirty=true;
   document.querySelectorAll('.sf-search-target').forEach(n=>n.classList.remove('sf-search-target'));
   if(highlight)e.classList.add('sf-search-target');
   try{history.replaceState(null,'','#'+encodeURIComponent(id))}catch(_){}
@@ -573,17 +588,24 @@ function updateProgress(){
   if($('prevPage')){const n=Number(sheet?.dataset.physicalPage||1);$('prevPage').disabled=n<=1;$('nextPage').disabled=n>=sheets.length;if(document.activeElement!==$('pageJump'))$('pageJump').value=sheet?.dataset.readingPage||''}
   const chapter=currentChapter();chapters.forEach((a,i)=>i===chapter?a.setAttribute('aria-current','location'):a.removeAttribute('aria-current'));
   $('prevChapter').disabled=chapter<=0;$('nextChapter').disabled=chapter>=chapters.length-1;
-  if(selected){const r=selected.getBoundingClientRect();if(r.bottom<readingOffset()||r.top>innerHeight)selected=null}
 }
 window.addEventListener('scroll',()=>{updateProgress();clearTimeout(saveTimer);saveTimer=setTimeout(saveResume,250)},{passive:true});
-['wheel','touchmove'].forEach(event=>window.addEventListener(event,e=>{if(!side.contains(e.target)&&!panels.some(p=>p.contains(e.target)))dirty=true},{passive:true}));
-window.addEventListener('pointerdown',e=>{if(e.clientX>=document.documentElement.clientWidth)dirty=true},{passive:true});
-window.addEventListener('keydown',e=>{if(['PageDown','PageUp','ArrowDown','ArrowUp','Home','End',' '].includes(e.key)&&!e.target.matches('input,textarea'))dirty=true});
+// Keep a chosen passage when focus moves to a toolbar. Resume tracking the
+// viewport when the reader scrolls the book itself.
+function followScroll(){if(online){selected=null;dirty=true}}
+function scrollsBook(node){return !node.closest?.('#side,.reader-panel,.reader-help-overlay,.sf-mobile-menu,input,textarea,select')}
+['wheel','touchmove'].forEach(event=>window.addEventListener(event,e=>{if(scrollsBook(e.target))followScroll()},{passive:true}));
+window.addEventListener('pointerdown',e=>{if(e.clientX>=document.documentElement.clientWidth)followScroll()},{passive:true});
+window.addEventListener('keydown',e=>{
+  if(!scrollsBook(e.target)||e.defaultPrevented)return;
+  if(e.key===' '&&e.target.closest?.('button'))return;
+  if(['PageDown','PageUp','ArrowDown','ArrowUp','Home','End',' '].includes(e.key))followScroll();
+});
 window.addEventListener('pagehide',saveResume);
 document.addEventListener('visibilitychange',()=>{if(document.hidden)saveResume()});
 $('resumeBtn').onclick=()=>{
   const r=state.resume;if(!r)return;mode(true);closeSide();
-  requestAnimationFrame(()=>{const e=resolveTarget(r.id);measure();dirty=true;
+  requestAnimationFrame(()=>{const e=resolveTarget(r.id);measure();dirty=true;selected=e;
     const y=e?e.getBoundingClientRect().top+scrollY+(Number(r.offsetRatio)||0)*e.getBoundingClientRect().height-readingOffset():Number(r.scrollY)||0;
     window.scrollTo({top:Math.max(0,y),behavior:'instant'});updateProgress();saveResume();toast('U kthyet te vendi i fundit i leximit.');
   });
